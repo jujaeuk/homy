@@ -1,6 +1,6 @@
 <?
 include "db_access.php";
-$que="create table ju_users(
+$que="create table users(
         no int not null auto_increment,
         unique(no),
         primary key(no),
