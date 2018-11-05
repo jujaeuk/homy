@@ -1,7 +1,7 @@
 <?
 include "db_access.php";
 include "head.php";
-if(mysqli_num_rows(mysqli_query("show tables like '".$_POST['homename']."_users'"))==1){
+if(mysqli_num_rows(mysqli_query($connect,"show tables like '".$_POST['homename']."_users'"))==1){
   echo "ERROR: home name alreay exists<br><a href=install.php>back</a>\n";
 }
 else{
