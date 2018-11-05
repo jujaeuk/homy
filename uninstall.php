@@ -1,7 +1,6 @@
 <?
 include "db_access.php";
-$fp=fopen("homename.txt","r");
-$homename=fgets($fp);
+include "lib.php";
 
 $que="drop table ".$homename."_users";
 mysqli_query($connect,$que);
