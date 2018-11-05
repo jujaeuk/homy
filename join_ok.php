@@ -4,8 +4,8 @@ include "head.php";
 $que="select * from users where username='".$_POST['username']."'";
 $result=mysqli_query($connect,$que);
 if(mysqli_num_rows($result)>0) $error_message="user name already exists";
-if($_POST['password1']="") $error_messsage="no password";
-if($_POST['password1']!=$_post['password2']) $error_message="different passwords";
+if($_POST['password1']=="") $error_messsage="no password";
+if($_POST['password1']!=$_POST['password2']) $error_message="different passwords";
 if($error_message){
   echo "ERROR: ".$error_message."<br>\n";
   echo "<a href=join.php>back</a>\n";
