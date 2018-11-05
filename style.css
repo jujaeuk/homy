@@ -1,0 +1,16 @@
+body,input,textarea{
+  font-family: 서울남산체, SeoulNamsan, Verdana;
+  font-size: 10pt;
+  line-height: 170%;
+}
+body{
+  background-color: lightgrey;
+}
+header{
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  padding-left: 30px;
+  width: 100%;
+  background-color:skyblue;
+}
