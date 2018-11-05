@@ -8,6 +8,9 @@ else{
   $fp=fopen("homename.txt","w");
   fwrite($fp,$_POST['homename']);
   fclose($fp);
+  
+  $fp=fopen("db_access.php","w");
+  fwrite($fp,
 
   $que="create table ".$_POST['homename']."_users(
     no int not null auto_increment,
