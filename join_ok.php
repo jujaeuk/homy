@@ -1,7 +1,8 @@
 <?
 include "db_access.php";
+include "lib.php";
 include "head.php";
-$que="select * from users where username='".$_POST['username']."'";
+$que="select * from ".$homename."_users where name='".$_POST['username']."'";
 $result=mysqli_query($connect,$que);
 if(mysqli_num_rows($result)>0) $error_message="user name already exists";
 if($_POST['password1']=="") $error_messsage="no password";
@@ -12,7 +13,7 @@ if($error_message){
 }
 else{
   $crypt_pass=crypt($_POST['password1'],"onlyone");
-  $que="insert into users (name, password) values('".$_POST['username']."','".$crypt_pass."')";
+  $que="insert into ".$homename."_users (name, password) values('".$_POST['username']."','".$crypt_pass."')";
   mysqli_query($connect,$que);
   echo "user ".$_POST['username']." created<br><a href=.>home</a>\n";
 }
