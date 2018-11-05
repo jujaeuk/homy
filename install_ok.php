@@ -1,5 +1,4 @@
 <?
-include "db_access.php";
 include "head.php";
 if(mysqli_num_rows(mysqli_query($connect,"show tables like '".$_POST['homename']."_users'"))==1){
   echo "ERROR: home name alreay exists<br><a href=install.php>back</a>\n";
@@ -14,6 +13,7 @@ else{
          "\";\n\$db=\"".$_POST['db']."\";\n");
   fwrite($fp, "\$connect=mysqli_connect(\$host,\$user,\$password,\$db) or die(\"DB connection error\");\n?>");
   fclose($fp);
+  include "db_access.php";
   $que="create table ".$_POST['homename']."_users(
     no int not null auto_increment,
     unique(no),
