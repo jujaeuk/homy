@@ -1,0 +1,12 @@
+<?
+include "db_access.php";
+$fp=fopen("homename.txt","r");
+$homename=fgets($fp);
+
+$que="drop table ".$homename."_users";
+mysqli_query($connect,$que);
+unlink("homename.txt");
+include "head.php";
+echo "$homename uninstalled\n";
+?>
+</body></html>
