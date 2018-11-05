@@ -10,8 +10,9 @@ else{
   fclose($fp);
   
   $fp=fopen("db_access.php","w");
-  fwrite($fp,
-
+  fwrite($fp, "<?\n\$host=\"".$_POST['host']."\";\n\$user=\"".$_POST['user']."\";\n\$password=\"".$_POST['password']."\";\n\$db=\""/$_POST['db']."\";\n");
+  fwrite($fp, "\$connect=mysqli_connect(\$host,\$user,\$password,\$db) or die(\"DB connection error\");\n?>");
+  fclose($fp);
   $que="create table ".$_POST['homename']."_users(
     no int not null auto_increment,
     unique(no),
