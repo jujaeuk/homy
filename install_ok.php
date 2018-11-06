@@ -22,6 +22,13 @@ else{
     name char(32),
     password char(32))";
   mysqli_query($connect,$que);
+  $que="create table ".$_POST['homename']."_board(
+    no int not null auto_increment,
+    unique(no),
+    primary key(no),
+    name char(32),
+    password char(32))";
+  mysqli_query($connect,$que);
   echo "home ".$_POST['homename']." created<br>\n";
 }
 ?>
