@@ -4,7 +4,8 @@ body,input,textarea{
   line-height: 170%;
 }
 body{
-  background-color: lightgrey;
+  background-color: ivory;
+  padding-top: 60px;
 }
 header{
   position: fixed;
@@ -12,5 +13,5 @@ header{
   left: 0px;
   padding-left: 30px;
   width: 100%;
-  background-color:skyblue;
+  background-color: orange;
 }
