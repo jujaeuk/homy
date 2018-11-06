@@ -1,6 +1,6 @@
 <?
 $fp=fopen("data/homename.txt","r");
-$homename=fgets($fp);
+$homename=trim(fgets($fp));
 fclose($fp);
 
 function is_mobile(){
