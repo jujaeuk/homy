@@ -7,5 +7,10 @@
 </head>
 <body>
   <header>
-    <h1>wonderful world, beautiful life</h1>
+    <h3>wonderful world, beautiful life</h3>
   </header>
+  <div class=container>
+    <div class=aside>
+      <aside><? include "side.php"; ?></aside>
+    </div>
+    <div class=main>
