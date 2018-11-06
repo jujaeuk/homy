@@ -1,5 +1,5 @@
 <?
-include "db_access.php";
+include "data/db_access.php";
 include "lib.php";
 $que="drop table ".$homename."_users";
 mysqli_query($connect,$que);
