@@ -6,52 +6,58 @@ if(!file_exists("data")){
   echo "<article>this home is not installed<br><a href=install.php>install</a></article>\n";
 }
 else{
-  $que="select * from ".$homename."_board";
-  if(mysqli_num_rows(mysqli_query($connect,$que))>0) $upper=1;
-  else $upper=0;
-  echo "<article><table><form method=post action=write_ok.php>\n";
-  if(is_mobile()){
-	  echo "<tr><td>title <input type=text class=mobile name=title></td></tr>\n";
-	  echo "<tr><td>content<br><textarea class=mobile name=content rows=10></textarea></td></tr>\n";
-	  echo "<tr><td align=center><input type=submit value=save></td></tr>\n";
+  if(isset($_COOKIE['user'])){
+    $que="select * from ".$homename."_board";
+    if(mysqli_num_rows(mysqli_query($connect,$que))>0) $upper=1;
+    else $upper=0;
+    echo "<article><table><form method=post action=write_ok.php>\n";
+    if(is_mobile()){
+      echo "<tr><td>title <input type=text class=mobile name=title></td></tr>\n";
+      echo "<tr><td>content<br><textarea class=mobile name=content rows=10></textarea></td></tr>\n";
+      echo "<tr><td align=center><input type=submit value=save></td></tr>\n";
+    }
+    else{
+      echo "<tr><td>title</td><td><input class=writetitle type=text name=title></td></tr>\n";
+      echo "<tr><td>content</td><td><textarea name=content rows=10></textarea></td></tr>\n";
+      echo "<tr><td colspan=2 align=center><input type=submit value=save></td></tr>\n";
+    }
+    echo "<input type=hidden name=upper value=$upper>\n";
+    echo "<input type=hidden name=writer value='".$_COOKIE['user']."'>\n";
+    echo "</form></table></article>\n";
+
+    $que="select * from ".$homename."_board order by time desc limit 10";
+    $result=mysqli_query($connect,$que);
+    while($check=mysqli_fetch_object($result)){
+      echo "<article>\n";
+      echo "<table>\n";
+      echo "<tr><td class=read>title</td><td class=read>".$check->title." (".date("Y-m-d i:s",$check->time).") <a href=modify.php?no=$check->no>*</a>\n";
+      echo "<a href=write.php?upper=$check->no>+</a>\n";
+      echo "<a href=delete.php?no=$check->no>-</a></td></tr>\n";
+      echo "<tr><td class=read>content</td><td class=read>".nl2br($check->content)."</td></tr>\n";
+      echo "<tr><td class=read>upper</td><td class=read>\n";
+      if($check->upper!=0){
+        $que="select * from ".$homename."_board where no=$check->upper";
+        $check_upper=mysqli_fetch_object(mysqli_query($connect,$que));
+        echo "<a href=read.php?no=$check_upper->no>$check_upper->title</a>\n";
+      }
+      echo "</td></tr>\n";
+      echo "<tr><td class=readb>lower</td><td class=readb>\n";
+      $que="select * from ".$homename."_board where upper=".$check->no;
+      $result_lower=mysqli_query($connect,$que);
+      if(mysqli_num_rows($result_lower)>0){
+        echo "<ul>\n";
+        while($check_lower=mysqli_fetch_object($result_lower)){
+          echo "<li><a href=read.php?no=$check_lower->no>$check_lower->title</a></li>\n";
+        }
+	echo "</ul>\n";
+      }
+      echo "</td></tr>\n";
+      echo "</table>\n";
+      echo "</article>\n";
+    }
   }
   else{
-	  echo "<tr><td>title</td><td><input class=writetitle type=text name=title></td></tr>\n";
-	  echo "<tr><td>content</td><td><textarea name=content rows=10></textarea></td></tr>\n";
-	  echo "<tr><td colspan=2 align=center><input type=submit value=save></td></tr>\n";
-  }
-  echo "<input type=hidden name=upper value=$upper>\n";
-  echo "</form></table></article>\n";
-
-  $que="select * from ".$homename."_board order by time desc limit 10";
-  $result=mysqli_query($connect,$que);
-  while($check=mysqli_fetch_object($result)){
-    echo "<article>\n";
-    echo "<table>\n";
-    echo "<tr><td class=read>title</td><td class=read>".$check->title." (".date("Y-m-d i:s",$check->time).") <a href=modify.php?no=$check->no>*</a>\n";
-    echo "<a href=write.php?upper=$check->no>+</a>\n";
-    echo "<a href=delete.php?no=$check->no>-</a></td></tr>\n";
-    echo "<tr><td class=read>content</td><td class=read>".nl2br($check->content)."</td></tr>\n";
-    echo "<tr><td class=read>upper</td><td class=read>\n";
-    if($check->upper!=0){
-	    $que="select * from ".$homename."_board where no=$check->upper";
-	    $check_upper=mysqli_fetch_object(mysqli_query($connect,$que));
-	    echo "<a href=read.php?no=$check_upper->no>$check_upper->title</a>\n";
-    }
-    echo "</td></tr>\n";
-    echo "<tr><td class=readb>lower</td><td class=readb>\n";
-    $que="select * from ".$homename."_board where upper=".$check->no;
-    $result_lower=mysqli_query($connect,$que);
-    if(mysqli_num_rows($result_lower)>0){
-	    echo "<ul>\n";
-	    while($check_lower=mysqli_fetch_object($result_lower)){
-	      echo "<li><a href=read.php?no=$check_lower->no>$check_lower->title</a></li>\n";
-	    }
-	    echo "</ul>\n";
-    }
-    echo "</td></tr>\n";
-    echo "</table>\n";
-    echo "<article>\n";
+    echo "<article>welcome</article>\n";
   }
 }
 ?>
