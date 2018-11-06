@@ -9,6 +9,13 @@ body{
   margin-left: 0px;
   margin-right: 0px;
 }
+a:link{
+  text-decoration: none;
+}
+a:hover{
+  text-decoration: none;
+  color: red;
+}
 header{
   position: fixed;
   top: 0px;
