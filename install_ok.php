@@ -6,13 +6,13 @@ if(mysqli_num_rows(mysqli_query($connect,"show tables like '".$_POST['homename']
 else{
   mkdir("data");
   $fp=fopen("data/homename.txt","w");
-  fwrite($fp,$_POST['homename']);
+  fwrite($fp,$_POST['homename']."\n");
   fclose($fp);
   
   $fp=fopen("data/db_access.php","w");
   fwrite($fp, "<?\n\$host=\"".$_POST['host']."\";\n\$user=\"".$_POST['user']."\";\n\$password=\"".$_POST['password'].
          "\";\n\$db=\"".$_POST['db']."\";\n");
-  fwrite($fp, "\$connect=mysqli_connect(\$host,\$user,\$password,\$db) or die(\"DB connection error\");\n?>");
+  fwrite($fp, "\$connect=mysqli_connect(\$host,\$user,\$password,\$db) or die(\"DB connection error\");\n?>\n");
   fclose($fp);
   include "data/db_access.php";
   $que="create table ".$_POST['homename']."_users(
