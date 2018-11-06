@@ -40,7 +40,7 @@ else{
     }
     echo "</td></tr>\n";
     echo "<tr><td class=readb>lower</td><td class=readb>\n";
-    $que="select * from ".$homename."_board where upper=".$_GET['no'];
+    $que="select * from ".$homename."_board where upper=".$check->no;
     $result_lower=mysqli_query($connect,$que);
     if(mysqli_num_rows($result_lower)>0){
 	    echo "<ul>\n";
