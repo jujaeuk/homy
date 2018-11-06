@@ -4,8 +4,10 @@ body,input,textarea{
   line-height: 170%;
 }
 body{
-  background-color: ivory;
-  padding-top: 60px;
+  background-color: lightgrey;
+  padding-top: 50px;
+  margin-left: 0px;
+  margin-right: 0px;
 }
 header{
   position: fixed;
@@ -15,6 +17,22 @@ header{
   width: 100%;
   background-color: orange;
 }
+.container{
+  display: flex;
+}
+.aside{
+  width: 150px;
+}
+aside{
+  background-color: white;
+  padding: 10px;
+  margin: 5px;
+}
+.main{
+  width: 500px;
+}
 article{
   background-color: white;
+  padding: 10px;
+  margin: 5px;
 }
