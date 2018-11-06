@@ -29,7 +29,8 @@ else{
     name char(32),
     password char(32))";
   mysqli_query($connect,$que);
-  echo "home ".$_POST['homename']." created<br>\n";
+  echo "<article>home ".$_POST['homename']." created<br><a href=.>home</a></article>\n";
 }
 ?>
+</div></div>
 </body></html>
