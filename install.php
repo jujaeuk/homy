@@ -1,6 +1,7 @@
 <?
 include "head.php";
 ?>
+<article>
 <form method=post action=install_ok.php>
 <table>
   <tr><td>home name</td><td><input type=text name=homename></td></tr>
@@ -12,4 +13,6 @@ include "head.php";
   <tr><td colspan=2><input type=submit value=install><td></tr>
 </table>
 </form>
+</article>
+</div></div>
 </body></html>
