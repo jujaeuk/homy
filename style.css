@@ -36,3 +36,16 @@ article{
   padding: 10px;
   margin: 5px;
 }
+.writetitle{
+	width: 500px;
+}
+td.read{
+	border-top: 1px grey dotted;
+}
+td.readb{
+	border-top: 1px grey dotted;
+	border-bottom: 1px grey dotted;
+}
+textarea{
+	width: 500px;
+}
