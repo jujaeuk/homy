@@ -1,6 +1,7 @@
 <?
 include "head.php";
 ?>
+<article>
 <form method=post action=join_ok.php>
 <table>
 <tr><td>username</td><td><input type=text name=username></td></tr>
@@ -9,4 +10,6 @@ include "head.php";
 <tr><td colspan=2><input type=submit value=join></td></tr>
 </table>
 </form>
+</article>
+</div></div>
 </body></html>
