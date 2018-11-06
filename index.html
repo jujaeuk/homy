@@ -2,5 +2,8 @@
 include "lib.php";
 include "db_access.php";
 include "head.php";
+if(!file_exists("data")){
+  echo "<article>this home is not installed<br><a href=install.php>install</a></article>\n";
+}
 ?>
 </body></html>
