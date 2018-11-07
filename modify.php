@@ -1,5 +1,6 @@
 <?
 include "lib.php";
+include "data/db_access.php";
 include "head.php";
 $que="select * from ".$homename."_board where no=".$_GET['no'];
 @$check=mysqli_fetch_object(mysqli_query($connect,$que));
