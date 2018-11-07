@@ -12,7 +12,7 @@ echo "<a href=delete.php?no=$check->no>-</a></td></tr>\n";
 echo "<tr><td class=read>content</td><td class=read>".nl2br($check->content)."</td></tr>\n";
 echo "<tr><td class=read>upper</td><td class=read>\n";
 if($check->upper!=0){
-	$que="select * from ju_board2 where no=$check->upper";
+	$que="select * from ".$homename."_board where no=$check->upper";
 	$check_upper=mysqli_fetch_object(mysqli_query($connect,$que));
 	echo "<a href=read.php?no=$check_upper->no>$check_upper->title</a>\n";
 }
