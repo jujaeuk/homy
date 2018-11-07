@@ -28,6 +28,7 @@ header{
   display: flex;
 }
 .aside{
+  position: fixed;
   width: 200px;
 }
 aside{
@@ -37,6 +38,9 @@ aside{
 }
 input.login{
   width: 100px;
+}
+.left{
+  width: 200px;
 }
 .main{
   width: 500px;
