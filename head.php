@@ -13,4 +13,5 @@
     <div class=aside>
       <aside><? include "side.php"; ?></aside>
     </div>
+    <div class=left></div>
     <div class=main>
