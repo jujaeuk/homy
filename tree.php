@@ -10,7 +10,7 @@ function subcontents($connect,$homename,$upper){
     echo "<ul>\n";
     while(@$check=mysqli_fetch_object($result)){
       echo "<li><a href=read.php?no=$check->no>$check->title</a>\n";
-      subcontents($connect,$check->no);
+      subcontents($connect,$homename,$check->no);
       echo "</li>\n";
     }
     echo "</ul>\n";
