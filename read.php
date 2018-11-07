@@ -6,9 +6,10 @@ echo "<article>\n";
 $que="select * from ".$homename."_board where no=".$_GET['no'];
 @$check=mysqli_fetch_object(mysqli_query($connect,$que));
 echo "<table>\n";
-echo "<tr><td class=read>title</td><td class=read>".$check->title." (".date("Y-m-d i:s",$check->time).") <a href=modify.php?no=$check->no>*</a>\n";
-echo "<a href=write.php?upper=$check->no>+</a>\n";
-echo "<a href=delete.php?no=$check->no>-</a></td></tr>\n";
+echo "<tr><td class=read>title</td><td class=read>".$check->title.
+	" (".date("Y-m-d i:s",$check->time).") <a href=modify.php?no=$check->no>mo</a>\n";
+echo "<a href=write.php?upper=$check->no>re</a>\n";
+echo "<a href=delete.php?no=$check->no>del</a></td></tr>\n";
 echo "<tr><td class=read>content</td><td class=read>".nl2br($check->content)."</td></tr>\n";
 echo "<tr><td class=read>upper</td><td class=read>\n";
 if($check->upper!=0){
