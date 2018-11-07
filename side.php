@@ -12,6 +12,7 @@ else{
   echo "<ul>\n";
   echo "<li><a href=.>home</a></li>\n";
   echo "<li><a href=write.php>write</a></li>\n";
+  echo "<li><a href=tree.php>tree</a></li>\n";
   echo "</ul>\n";
 }
 ?>
