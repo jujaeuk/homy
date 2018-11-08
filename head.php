@@ -4,7 +4,9 @@
 <title>Jaeuk Ju</title>
 <meta http-equiv="content-type" content="text/html;charset=utf-8">
 <meta name="viewport" content="width=device-width, user-scalable=no">
-<link rel="stylesheet" type="text/css" href="style.css">
+<?
+echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n";
+?>
 </head>
 <body>
   <header>
