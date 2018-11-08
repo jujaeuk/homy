@@ -10,9 +10,9 @@ else{
   echo "user: ".$_COOKIE['user']."<br>\n";
   echo "<a href=logout.php>logout</a>\n";
   echo "<ul>\n";
-  echo "<li><a href=.>home</a></li>\n";
-  echo "<li><a href=write.php>write</a></li>\n";
-  echo "<li><a href=tree.php>tree</a></li>\n";
+  echo "<li class=menu><a href=.>home</a></li>\n";
+  echo "<li class=menu><a href=write.php>write</a></li>\n";
+  echo "<li class=menu><a href=tree.php>tree</a></li>\n";
   echo "</ul>\n";
 }
 ?>
