@@ -1,0 +1,65 @@
+body,input,textarea{
+  font-family: 서울남산체, SeoulNamsan, Verdana;
+  font-size: 10pt;
+  line-height: 170%;
+}
+body{
+  background-color: lightgrey;
+  padding-top: 50px;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+a:link{
+  text-decoration: none;
+}
+a:hover{
+  text-decoration: none;
+  color: red;
+}
+header{
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  padding-left: 30px;
+  width: 100%;
+  background-color: orange;
+}
+.container{
+  display: flex;
+}
+.aside{
+  position: fixed;
+  width: 200px;
+}
+aside{
+  background-color: white;
+  padding: 10px;
+  margin: 5px;
+}
+input.login{
+  width: 100px;
+}
+.left{
+  width: 200px;
+}
+.main{
+  width: 500px;
+}
+article{
+  background-color: white;
+  padding: 10px;
+  margin: 5px;
+}
+.writetitle{
+	width: 400px;
+}
+td.read{
+	border-top: 1px grey dotted;
+}
+td.readb{
+	border-top: 1px grey dotted;
+	border-bottom: 1px grey dotted;
+}
+textarea{
+	width: 400px;
+}
