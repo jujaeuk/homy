@@ -3,7 +3,7 @@ if(!isset($_COOKIE['user'])){
   echo "<form method=post action=login_ok.php>\n";
   echo "<table><tr><td>user</td><td><input class=login type=text name=username></td></tr>\n";
   echo "<tr><td>password</td><td><input class=login type=password name=password></td></tr>\n";
-  echo "<tr><td colspan=2><input type=submit value=login><a href=join.php>join</a></td></tr></table>\n";
+  echo "<tr><td colspan=2><input type=submit value=login> <a href=join.php>join</a></td></tr></table>\n";
   echo "</form>\n";
 }
 else{
