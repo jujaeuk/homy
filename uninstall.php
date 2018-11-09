@@ -15,7 +15,10 @@ if($check->no==1){
   include "head.php";
   echo "<article>$homename uninstalled</article>\n";
 }
-else echo "<article>you don't have the right</article>\n";
+else{
+  include "lib.php";
+  include "head.php";
+  echo "<article>you don't have the right</article>\n";
 ?>
 </div></div>
 </body></html>
