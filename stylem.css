@@ -25,30 +25,30 @@ header{
   background-color: orange;
 }
 .container{
-  display: flex;
+  width: 100%;
 }
 .aside{
-  position: fixed;
-  width: 200px;
+  width: 100%;
 }
 aside{
   background-color: white;
   padding: 10px;
-  margin: 5px;
+  width: 100%;
+}
+li.menu{
+	display: inline;
 }
 input.login{
   width: 100px;
 }
-.left{
-  width: 200px;
-}
 .main{
-  width: 500px;
+  width: 100%;
 }
 article{
   background-color: white;
   padding: 10px;
-  margin: 5px;
+  margin-top: 5px;
+  width: 100%;
 }
 .writetitle{
 	width: 400px;
@@ -61,5 +61,5 @@ td.readb{
 	border-bottom: 1px grey dotted;
 }
 textarea{
-	width: 400px;
+	width: 300px;
 }
