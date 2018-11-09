@@ -1,11 +1,13 @@
 <?
-include "lib.php";
-include "data/db_access.php";
-include "head.php";
 if(!file_exists("data")){
+  include "lib.php";
+  include "head.php";
   echo "<article>this home is not installed<br><a href=install.php>install</a></article>\n";
 }
 else{
+  include "lib.php";
+  include "data/db_access.php";
+  include "head.php";
   if(isset($_COOKIE['user'])){
     $que="select * from ".$homename."_board";
     if(mysqli_num_rows(mysqli_query($connect,$que))>0) $upper=1;
