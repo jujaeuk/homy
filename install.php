@@ -1,4 +1,5 @@
 <?
+include "lib.php";
 include "head.php";
 ?>
 <article>
