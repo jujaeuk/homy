@@ -51,7 +51,7 @@ article{
   width: 100%;
 }
 .writetitle{
-	width: 400px;
+	width: 220px;
 }
 td.read{
 	border-top: 1px grey dotted;
@@ -61,5 +61,5 @@ td.readb{
 	border-bottom: 1px grey dotted;
 }
 textarea{
-	width: 300px;
+	width: 250px;
 }
