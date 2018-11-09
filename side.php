@@ -7,7 +7,7 @@ if(!isset($_COOKIE['user'])){
   echo "</form>\n";
 }
 else{
-  echo "user: ".$_COOKIE['user']."<br>\n";
+  echo "user: ".$_COOKIE['user']."\n";
   echo "<a href=logout.php>logout</a>\n";
   echo "<ul>\n";
   echo "<li class=menu><a href=.>home</a></li>\n";
