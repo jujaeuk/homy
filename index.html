@@ -29,7 +29,7 @@ else{
 	" (".$check->writer.", ".date("Y-m-d i:s",$check->time).") <a href=write.php?upper=$check->no>re</a>\n";
       if($_COOKIE['user']==$check->writer){
       	echo "<a href=modify.php?no=$check->no>mo</a>\n";
-	echo "<a href=delete.php?no=$check->no>del</a>;
+	echo "<a href=delete.php?no=$check->no>del</a>\n";
       }
       echo "</td></tr>\n";
       echo "<tr><td class=read>content</td><td class=read>".nl2br($check->content)."</td></tr>\n";
