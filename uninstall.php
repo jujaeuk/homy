@@ -1,7 +1,5 @@
 <?
-include "lib.php";
 include "data/db_access.php";
-include "head.php";
 $que="select * from ".$homename."_users where name='".$_COOKIE['user']."'";
 @$check=mysqli_fetch_object(mysqli_query($connect,$que));
 if($check->no==1){
@@ -12,6 +10,9 @@ if($check->no==1){
   unlink("data/homename.txt");
   unlink("data/db_access.php");
   rmdir("data");
+  setcookie("user", $_COOKIE['user'],time()-3600);
+  include "lib.php";
+  include "head.php";
   echo "<article>$homename uninstalled</article>\n";
 }
 else echo "<article>you don't have the right</article>\n";
