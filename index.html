@@ -6,7 +6,6 @@ if(!file_exists("data")){
 }
 else{
   include "lib.php";
-  include "data/db_access.php";
   include "head.php";
   if(isset($_COOKIE['user'])){
     $que="select * from ".$homename."_board";
