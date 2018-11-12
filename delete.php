@@ -1,6 +1,5 @@
 <?
 include "lib.php";
-include "data/db_access.php";
 $que="select * from ".$homename."_board where upper=".$_GET['no'];
 $result=mysqli_query($connect,$que);
 if(mysqli_num_rows($result)){
