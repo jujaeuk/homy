@@ -14,12 +14,10 @@ if($check->no==1){
   unlink("data/db_access.php");
   rmdir("data");
   setcookie("user", $_COOKIE['user'],time()-3600);
-  include "lib.php";
   include "head.php";
   echo "<article>$homename uninstalled</article>\n";
 }
 else{
-  include "lib.php";
   include "head.php";
   echo "<article>you don't have the right</article>\n";
 }
