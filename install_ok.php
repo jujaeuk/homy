@@ -34,6 +34,15 @@ else{
   	content text,
   	upper int)";
   mysqli_query($connect,$que);
+  $que="create table ".$_POST['homename']."_log(
+  	no int not null auto_increment,
+  	unique(no),
+  	primary key(no),
+    start int,
+    end int,
+    category char(32),
+    content char(128))";
+  mysqli_query($connect,$que);
   echo "<article>home ".$_POST['homename']." created<br><a href=.>home</a></article>\n";
 }
 ?>
