@@ -8,8 +8,6 @@ if($check->no==1){
   mysqli_query($connect,$que);
   $que="drop table ".$homename."_board";
   mysqli_query($connect,$que);
-  $que="drop table ".$homename."_log";
-  mysqli_query($connect,$que);
   unlink("data/homename.txt");
   unlink("data/db_access.php");
   rmdir("data");
