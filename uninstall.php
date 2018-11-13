@@ -20,6 +20,7 @@ else{
   include "lib.php";
   include "head.php";
   echo "<article>you don't have the right</article>\n";
+}
 ?>
 </div></div>
 </body></html>
