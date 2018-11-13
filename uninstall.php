@@ -1,4 +1,5 @@
 <?
+include "lib.php";
 include "data/db_access.php";
 $que="select * from ".$homename."_users where name='".$_COOKIE['user']."'";
 @$check=mysqli_fetch_object(mysqli_query($connect,$que));
