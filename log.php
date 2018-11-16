@@ -76,13 +76,6 @@ else{
 echo "<form name=frm_filter method=post action=".$_SERVER['PHP_SELF'].">\n";
 echo "category filter: <select name=category_filter onChange=\"JavaScript:document.frm_filter.submit();\">\n";
 echo "<option value=>---</option>\n";
-$que="select * from ".$homename."_log order by category";
-$result=mysqli_query($connect,$que);
-$temp="";
-while(@$check=mysqli_fetch_object($result)){
-  if($temp!=$check->category) $category[]=$check->category;
-  $temp=$check->category;
-}
 for($i=0;$i<sizeof($category);$i++){
  echo "<option value='".$category[$i]."'>".$category[$i]."</option>\n";
 }
