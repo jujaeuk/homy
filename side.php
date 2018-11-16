@@ -7,12 +7,17 @@ if(!isset($_COOKIE['user'])){
   echo "</form>\n";
 }
 else{
+  $que="select * from ".$homename."_users where name='".$_COOKIE['user']."'";
+  $check=mysqli_fetch_object(mysqli_query($connect,$que));
+  if($check->no==1) $admin="yes";
+  
   echo "user: ".$_COOKIE['user']."\n";
   echo "<a href=logout.php>logout</a>\n";
   echo "<ul>\n";
   echo "<li class=menu><a href=.>home</a></li>\n";
   echo "<li class=menu><a href=write.php>write</a></li>\n";
   echo "<li class=menu><a href=tree.php>tree</a></li>\n";
+  if($admin=="yes") echo "<li class=menu><a href=log.php>log</a></li>\n";
   echo "</ul>\n";
 }
 ?>
