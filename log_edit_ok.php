@@ -33,7 +33,6 @@ else{
     $que=$que.", end=$end";
   }
   $que=$que." where no=".$_POST['no'];
-  echo $que;
   mysqli_query($connect,$que);
   echo "<meta http-equiv=\"refresh\" content=\"0;url=log.php\">\n";
 }
