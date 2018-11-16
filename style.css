@@ -1,4 +1,4 @@
-body,td,input,textarea{
+body,td,input,textarea,select,option{
   font-family: 서울남산체, SeoulNamsan, Verdana;
   font-size: 10pt;
   line-height: 170%;
@@ -62,4 +62,7 @@ td.readb{
 }
 textarea{
 	width: 400px;
+}
+input.log{
+	width: 300px;
 }
