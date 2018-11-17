@@ -12,6 +12,8 @@ if($check->no==1){
   mysqli_query($connect,$que);
   unlink("data/homename.txt");
   unlink("data/db_access.php");
+  if(file_exists("data/log.csv")) unlink("data/log.csv");
+  if(file_exists("data/log.txt")) unlink("data/log.txt");
   rmdir("data");
   setcookie("user", $_COOKIE['user'],time()-3600);
   include "head.php";
