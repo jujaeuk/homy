@@ -3,7 +3,7 @@ include "lib.php";
 include "data/db_access.php";
 include "head.php";
 echo "<article>\n";
-echo "<a href=log_backup.php>backup</a>\n";
+echo "<ul><li class=log><a href=log_backup.php>backup</a></li></ul>\n";
 echo "<form method=post action=start.php>\n";
 echo "<table>\n";
 echo "<tr><td>category</td><td><select name=category>\n";
