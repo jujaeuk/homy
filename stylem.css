@@ -63,3 +63,10 @@ td.readb{
 textarea{
 	width: 250px;
 }
+input.log{
+  width: 300px;
+}
+li.log{
+  display: inline;
+}
+
