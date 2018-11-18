@@ -14,6 +14,7 @@ if($check->no==1){
   unlink("data/db_access.php");
   if(file_exists("data/log.csv")) unlink("data/log.csv");
   if(file_exists("data/log.txt")) unlink("data/log.txt");
+  if(file_exists("data/board.txt")) unlink("data/board.txt");
   rmdir("data");
   setcookie("user", $_COOKIE['user'],time()-3600);
   include "head.php";
