@@ -10,11 +10,9 @@ if($check->no==1){
   mysqli_query($connect,$que);
   $que="drop table ".$homename."_log";
   mysqli_query($connect,$que);
-  unlink("data/homename.txt");
-  unlink("data/db_access.php");
-  if(file_exists("data/log.csv")) unlink("data/log.csv");
-  if(file_exists("data/log.txt")) unlink("data/log.txt");
-  if(file_exists("data/board.txt")) unlink("data/board.txt");
+  $files=glob("data/*");
+  foreach($files as $file)
+    if(is_file($file)) unlink($file);
   rmdir("data");
   setcookie("user", $_COOKIE['user'],time()-3600);
   include "head.php";
