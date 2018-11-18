@@ -18,6 +18,7 @@ else{
   echo "<li class=menu><a href=write.php>write</a></li>\n";
   echo "<li class=menu><a href=tree.php>tree</a></li>\n";
   if($admin=="yes"){
+    echo "<li class=menu><a href=board_backup.php>board backup</a></li>\n";
     echo "<li class=menu><a href=log.php>log</a></li>\n";
     echo "<li class=menu><a href=users.php>users</a></li>\n";
   }
