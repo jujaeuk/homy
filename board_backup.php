@@ -21,7 +21,7 @@ while(@$check=mysqli_fetch_object($result)){
     while($check_lower=mysqli_fetch_object($result_lower)){
       fwrite($fp,"no .".$check_lower->no." ".$check_lower->title."\n");
     }
-	}
+  }
 }
 fclose($fp);
 include "head.php";
