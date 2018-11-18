@@ -9,12 +9,23 @@ $i=0;
 while(@$check=mysqli_fetch_object($result)){
   fwrite($fp,"no. ".$check->no." ".$check->title." (".$check->writer.", ".date("Y-m-d H:i",$check->time)."\n");
   fwrite($fp,$check->content."\n");
-  $que="select * from ".$homename."_
+  if($check->upper!=0){
+    $que="select * from ".$homename."_board where no=$check->upper";
+    $check_upper=mysqli_fetch_object(mysqli_query($connect,$que));
+    fwrite($fp,"upper: no.".$check_uper->no." ".$check_upper->title\n");
+  }
+  $que="select * from ".$homename."_board where upper=".$check->no;
+  $result_lower=mysqli_query($connect,$que);
+  if(mysqli_num_rows($result_lower)>0){
+    fwrite($fp,"lower:\n");
+    while($check_lower=mysqli_fetch_object($result_lower)){
+      fwrite($fp,"no .".$check_lower->no." ".$check_lower->title."\n");
+    }
+	}
 }
-fclose($fpc);
-fclose($fpt);
+fclose($fp);
 include "head.php";
 echo "<article>\n";
-echo "<a href=data/log.csv>log.csv</a> <a href=data/log.txt>log.txt</a>\n";
+echo "<a href=data/board.txt>board.txt</a>\n";
 echo "</article></div></div></body></html>\n";
 ?>
