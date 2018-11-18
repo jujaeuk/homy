@@ -15,8 +15,7 @@ if($check->no==1){
     if(is_file($file)) unlink($file);
   rmdir("data");
   setcookie("user", $_COOKIE['user'],time()-3600);
-  include "head.php";
-  echo "<article>$homename uninstalled</article>\n";
+  echo "<meta http-equiv=\"refresh\" content=\"0;url=index.html\">\n";
 }
 else{
   include "head.php";
