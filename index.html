@@ -9,14 +9,11 @@ else{
   include "data/db_access.php";
   include "head.php";
   if(isset($_COOKIE['user'])){
-    $que="select * from ".$homename."_board";
-    if(mysqli_num_rows(mysqli_query($connect,$que))>0) $upper=1;
-    else $upper=0;
     echo "<article><table><form method=post action=write_ok.php>\n";
     echo "<tr><td>title</td><td><input class=writetitle type=text name=title></td></tr>\n";
     echo "<tr><td>content</td><td><textarea name=content rows=10></textarea></td></tr>\n";
     echo "<tr><td colspan=2 align=center><input type=submit value=save></td></tr>\n";
-    echo "<input type=hidden name=upper value=$upper>\n";
+    echo "<input type=hidden name=upper value=0>\n";
     echo "<input type=hidden name=writer value='".$_COOKIE['user']."'>\n";
     echo "</form></table></article>\n";
 
