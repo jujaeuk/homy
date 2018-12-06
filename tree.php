@@ -3,7 +3,7 @@ include "lib.php";
 include "data/db_access.php";
 include "head.php";
 function subcontents($connect,$homename,$upper){
-  $que="select * from ".$homename."_board where upper=$upper order by title";
+  $que="select * from ".$homename."_board where upper=$upper order by time";
   $result=mysqli_query($connect,$que);
   echo "<a href=write.php?upper=$upper>+</a>\n";
   if(mysqli_num_rows($result)){
