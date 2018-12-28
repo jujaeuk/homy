@@ -22,6 +22,7 @@ while(@$check=mysqli_fetch_object($result)){
       fwrite($fp,"no .".$check_lower->no." ".$check_lower->title."\n");
     }
   }
+  fwrite($fp,"\n");
 }
 fclose($fp);
 function subcontents($fp,$connect,$homename,$upper){
@@ -44,6 +45,7 @@ function subcontents($fp,$connect,$homename,$upper){
           fwrite($fp,"no .".$check_lower->no." ".$check_lower->title."\n");
         }
       }
+      fwrite($fp,"\n");
       subcontents($fp,$connect,$homename,$check->no);
     }
   }
