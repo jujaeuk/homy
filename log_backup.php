@@ -9,7 +9,7 @@ $que="select * from ".$homename."_log order by start";
 $result=mysqli_query($connect,$que);
 $i=0;
 while(@$check=mysqli_fetch_object($result)){
-  fwrite($fpc, $check->no.",".date("Y-m-d H:i",$check->start).",".date("Y-m-d H:i",$check->end).",\"".$check->category."\",\"".$check->content."\"\n");
+  fwrite($fpc, $check->no.",".date("Y-m-d H:i:s",$check->start).",".date("Y-m-d H:i:s",$check->end).",\"".$check->category."\",\"".$check->content."\"\n");
   if($date!=date("Ymd",$check->start)){
     if($i!=0) fwrite($fpt,"\n");
     fwrite($fpt,date("Ymd.D",$check->start)."\n");
