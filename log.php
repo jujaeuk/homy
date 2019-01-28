@@ -3,6 +3,11 @@ include "lib.php";
 include "data/db_access.php";
 include "head.php";
 echo "<article>\n";
+if($admin!="yes"){
+  echo "this page is for admin only\n";
+  echo "</article></div></div></body></html>\n";
+  exit;
+}
 echo "<ul><li class=log><a href=log_backup.php>backup</a></li>\n".
   "<li class=log>| <a href=log_category_edit.php>edit category</a></li></ul>\n";
 echo "<form method=post action=start.php>\n";
