@@ -14,7 +14,7 @@ if(isset($_COOKIE['user'])){
     echo "<a href=delete.php?no=$check->no>del</a>\n";
   }
   echo "</td></tr>\n";
-  echo "<tr><td class=read>content</td><td class=read>".nl2br($check->content)."</td></tr>\n";
+  echo "<tr><td class=read></td><td class=read>".nl2br($check->content)."</td></tr>\n";
   echo "<tr><td class=read>upper</td><td class=read>\n";
   if($check->upper!=0){
     $que="select * from ".$homename."_board where no=$check->upper";
