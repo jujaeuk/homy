@@ -66,6 +66,9 @@ textarea{
 input.log{
   width: 300px;
 }
+input.log_loss{
+  width: 50px;
+}
 li.log{
   display: inline;
 }
