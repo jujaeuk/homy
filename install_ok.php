@@ -25,19 +25,19 @@ else{
     password char(32))";
   mysqli_query($connect,$que);
   $que="create table ".$_POST['homename']."_board(
-  	no int not null auto_increment,
-  	unique(no),
-  	primary key(no),
-  	title char(128),
-  	time int,
-  	writer char(32),
-  	content text,
-  	upper int)";
+    no int not null auto_increment,
+    unique(no),
+    primary key(no),
+    title char(128),
+    time int,
+    writer char(32),
+    content text,
+    upper int)";
   mysqli_query($connect,$que);
   $que="create table ".$_POST['homename']."_log(
-  	no int not null auto_increment,
-  	unique(no),
-  	primary key(no),
+    no int not null auto_increment,
+    unique(no),
+    primary key(no),
     start int,
     end int,
     loss int default 0,
