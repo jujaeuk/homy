@@ -40,6 +40,7 @@ else{
   	primary key(no),
     start int,
     end int,
+    loss int default 0,
     category char(32),
     content char(128))";
   mysqli_query($connect,$que);
