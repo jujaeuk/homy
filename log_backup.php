@@ -14,7 +14,9 @@ while(@$check=mysqli_fetch_object($result)){
     if($i!=0) fwrite($fpt,"\n");
     fwrite($fpt,date("Ymd.D",$check->start)."\n");
   }
-  fwrite($fpt,date("Hi",$check->start)."-".date("Hi",$check->end)." (".$check->category.") ".$check->content."\n");
+  fwrite($fpt,date("Hi",$check->start)."-".date("Hi",$check->end));
+  if($check->loss>0) fwrite($ftp," (-:$check->loss)");
+  fwrite($ftp," (".$check->category.") ".$check->content."\n");
   $i++;
   $date=date("Ymd",$check->start);
 }
