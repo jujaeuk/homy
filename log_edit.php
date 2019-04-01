@@ -113,6 +113,7 @@ for($i=0;$i<sizeof($category);$i++){
 }
 echo "<option value='직접 입력'>직접 입력</option>\n";
 echo "</select>\n";
+echo "loss <input class=log_loss type=text name=loss value=\"$check->loss\">";
 echo "</td></tr>\n";
 echo "<tr><td>content</td><td>\n";
 echo "<input class=log type=text name=content value=\"$check->content\">";
