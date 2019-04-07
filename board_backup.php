@@ -2,6 +2,8 @@
 include "lib.php";
 include "data/db_access.php";
 $boarddate=date("ymd");
+
+// a : chronological record
 $fp=fopen("data/board_a".$boarddate.".txt","w");
 $que="select * from ".$homename."_board order by time";
 $result=mysqli_query($connect,$que);
@@ -50,6 +52,8 @@ function subcontents($fp,$connect,$homename,$upper){
     }
   }
 }
+
+// b : hierarchical record
 $fp=fopen("data/board_b".$boarddate.".txt","w");
 subcontents($fp,$connect,$homename,0);
 fclose($fp);
