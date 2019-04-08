@@ -5,7 +5,7 @@ include "data/db_access.php";
 $que="drop table ".$homename."_board";
 mysqli_query($connect,$que);
 
-$que="create table ".$_POST['homename']."_board(
+$que="create table ".$homename."_board(
   no int not null auto_increment,
   unique(no),
   primary key(no),
