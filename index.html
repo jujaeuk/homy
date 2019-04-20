@@ -9,14 +9,6 @@ else{
   include "data/db_access.php";
   include "head.php";
   if(isset($_COOKIE['user'])){
-    echo "<article><table><form method=post action=write_ok.php>\n";
-    echo "<tr><td>title</td><td><input class=writetitle type=text name=title></td></tr>\n";
-    echo "<tr><td>content</td><td><textarea name=content rows=10></textarea></td></tr>\n";
-    echo "<tr><td colspan=2 align=center><input type=submit value=save></td></tr>\n";
-    echo "<input type=hidden name=upper value=0>\n";
-    echo "<input type=hidden name=writer value='".$_COOKIE['user']."'>\n";
-    echo "</form></table></article>\n";
-
     $que="select * from ".$homename."_board order by time desc limit 10";
     $result=mysqli_query($connect,$que);
     while($check=mysqli_fetch_object($result)){
