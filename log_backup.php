@@ -9,14 +9,15 @@ $que="select * from ".$homename."_log order by start";
 $result=mysqli_query($connect,$que);
 $i=0;
 while(@$check=mysqli_fetch_object($result)){
-  fwrite($fpc, $check->no.",".date("Y-m-d H:i:s",$check->start).",".date("Y-m-d H:i:s",$check->end).",\"".$check->category."\",\"".$check->content."\"\n");
+  fwrite($fpc, $check->no.",".date("Y-m-d H:i:s",$check->start).",".date("Y-m-d H:i:s",$check->end).
+         ",\"".$check->category."\",\"".html_entity_decode($check->content)."\"\n");
   if($date!=date("Ymd",$check->start)){
     if($i!=0) fwrite($fpt,"\n");
     fwrite($fpt,date("Ymd.D",$check->start)."\n");
   }
   fwrite($fpt,date("Hi",$check->start)."-".date("Hi",$check->end));
   if($check->loss>0) fwrite($ftp," (-:$check->loss)");
-  fwrite($ftp," (".$check->category.") ".$check->content."\n");
+  fwrite($ftp," (".$check->category.") ".html_entity_decode($check->content)."\n");
   $i++;
   $date=date("Ymd",$check->start);
 }
