@@ -56,6 +56,10 @@ article{
 td.read{
 	border-top: 1px grey dotted;
 }
+td.content{
+	border-top: 1px grey dotted;
+	width: 100%;
+}
 td.readb{
 	border-top: 1px grey dotted;
 	border-bottom: 1px grey dotted;
