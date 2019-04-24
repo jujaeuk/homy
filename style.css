@@ -58,7 +58,7 @@ td.read{
 }
 td.content{
   border-top: 1px grey dotted;
-  width: 430px;
+  width: 100%;
 }
 td.readb{
   border-top: 1px grey dotted;
