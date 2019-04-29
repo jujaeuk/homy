@@ -64,11 +64,11 @@ $prev=$page-1;
 if($category_filter){
   $que="select * from ".$homename."_log where category='".$category_filter."' order by start desc limit ".($rownum*$prev);
   if(mysqli_num_rows(mysqli_query($connect,$que)))
-    echo "<a href=$PHP_SELF?page=$prev&category_filter='$category_filter'>prev</a>\n";
+    echo "<a href=$PHP_SELF?page=$prev&category_filter=".urlencode($category_filter).">prev</a>\n";
   else echo "prev\n";
   $que="select * from ".$homename."_log where category='".$category_filter."' order by start desc limit ".($rownum*$next);
   if(mysqli_num_rows(mysqli_query($connect,$que))>$rownum*($next-1))
-    echo "<a href=$PHP_SELF?page=$next&category_filter='".$category_filter."'>next</a>\n";
+    echo "<a href=$PHP_SELF?page=$next&category_filter=".urlencode($category_filter).">next</a>\n";
   else echo "next\n";
 }
 else{
