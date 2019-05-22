@@ -10,7 +10,7 @@ $result=mysqli_query($connect,$que);
 $i=0;
 while(@$check=mysqli_fetch_object($result)){
   fwrite($fp,"no. ".$check->no." ".$check->title." (".$check->writer.", ".date("Y-m-d H:i",$check->time).")\n");
-  fwrite($fp,$check->content."\n");
+  fwrite($fp,html_entity_decode($check->content)."\n");
   if($check->upper!=0){
     $que="select * from ".$homename."_board where no=$check->upper";
     $check_upper=mysqli_fetch_object(mysqli_query($connect,$que));
@@ -33,7 +33,7 @@ function subcontents($fp,$connect,$homename,$upper){
   if(mysqli_num_rows($result)){
     while(@$check=mysqli_fetch_object($result)){
       fwrite($fp,"no. ".$check->no." ".$check->title." (".$check->writer.", ".date("Y-m-d H:i",$check->time).")\n");
-      fwrite($fp,$check->content."\n");
+      fwrite($fp,html_entity_decode($check->content)."\n");
       if($check->upper!=0){
         $que="select * from ".$homename."_board where no=$check->upper";
         $check_upper=mysqli_fetch_object(mysqli_query($connect,$que));
