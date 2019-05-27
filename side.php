@@ -21,6 +21,7 @@ else{
     echo "<li class=menu><a href=board_backup.php>board backup</a></li>\n";
     echo "<li class=menu><a href=board_reset.php>board reset</a></li>\n";
     echo "<li class=menu><a href=log.php>log</a></li>\n";
+    echo "<li class=menu><a href=log_stat.php>log stat</a></li>\n";
     echo "<li class=menu><a href=users.php>users</a></li>\n";
   }
   echo "</ul>\n";
