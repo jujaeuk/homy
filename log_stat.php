@@ -116,6 +116,7 @@ for($i=0;$i<sizeof($cate_list);$i++){
 echo "</table>\n";
 echo "</td>\n";
 
+if(!is_mobile()){
 echo "<td class=log_stat>\n";
 $week_start=time_num(strtotime("-".($weekday+20)." days"));
 $week_end=time_num(strtotime("-".($weekday+13)." days"));
@@ -150,7 +151,7 @@ for($i=0;$i<sizeof($cate_list);$i++){
 }
 echo "</table>\n";
 echo "</td>\n";
-
+}
 echo "</tr></table>\n";
 echo "</article>\n";
 ?>
