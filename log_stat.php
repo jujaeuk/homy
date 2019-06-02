@@ -2,8 +2,7 @@
 include "lib.php";
 include "data/db_access.php";
 include "head.php";
-echo "<article>\n";
-$today=time();
+
 function time_num($date){
   $time_num->year=date("Y",$date);
   $time_num->month=date("m",$date);
@@ -12,11 +11,6 @@ function time_num($date){
   $time_num->min=date("i",$date);
   return $time_num;
 }
-$time_num=time_num($today);
-$weekday=date("w",$today);
-if($weekday==0) $weekday=7;
-echo "<table><tr>\n";
-
 function stat_week($start,$end,$homename,$connect,$cate_list){
   echo "<td class=log_stat>\n";
   $week_start=time_num(strtotime("-".($start)." days"));
@@ -49,6 +43,13 @@ function stat_week($start,$end,$homename,$connect,$cate_list){
   echo "</td>\n";
   return $cate_list;
 }
+
+echo "<article>\n";
+$today=time();
+$time_num=time_num($today);
+$weekday=date("w",$today);
+if($weekday==0) $weekday=7;
+echo "<table><tr>\n";
 $cate_list=stat_week($weekday-1,$weekday-8,$homename,$connect,$cate_list);
 $cate_list=stat_week($weekday+6,$weekday-1,$homename,$connect,$cate_list);
 $cate_list=stat_week($weekday+13,$weekday+6,$homename,$connect,$cate_list);
