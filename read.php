@@ -8,7 +8,7 @@ if(isset($_COOKIE['user'])){
   @$check=mysqli_fetch_object(mysqli_query($connect,$que));
   echo "<table>\n";
   echo "<tr><td class=read>title</td><td class=read>".$check->title.
-    " (".$check->writer.", ".date("Y-m-d i:s",$check->time).") <a href=write.php?upper=$check->no>bra</a>\n";
+    " (".$check->writer.", ".date("Y-m-d i:s",$check->time).") <a href=write.php?upper=$check->no>sub</a>\n";
   if($_COOKIE['user']==$check->writer){
     echo "<a href=modify.php?no=$check->no>mod</a>\n";
     echo "<a href=delete.php?no=$check->no>del</a>\n";
