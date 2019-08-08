@@ -7,7 +7,7 @@ if(isset($_COOKIE['user'])){
   $que="select * from ".$homename."_board where no=".$_GET['no'];
   @$check=mysqli_fetch_object(mysqli_query($connect,$que));
   echo "<table>\n";
-  echo "<tr><td class=read>title</td><td class=read>".$check->title.
+  echo "<tr><td class=read>title</td><td class=content>".$check->title.
     " (".$check->writer.", ".date("Y-m-d i:s",$check->time).") <a href=write.php?upper=$check->no>sub</a>\n";
   if($_COOKIE['user']==$check->writer){
     echo "<a href=modify.php?no=$check->no>mod</a>\n";

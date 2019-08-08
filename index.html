@@ -14,7 +14,7 @@ else{
     while($check=mysqli_fetch_object($result)){
       echo "<article>\n";
       echo "<table>\n";
-      echo "<tr><td class=read>title</td><td class=read>".$check->title.
+      echo "<tr><td class=read>title</td><td class=content>".$check->title.
 	" (".$check->writer.", ".date("Y-m-d i:s",$check->time).") <a href=write.php?upper=$check->no>sub</a>\n";
       if($_COOKIE['user']==$check->writer){
       	echo "<a href=modify.php?no=$check->no>mod</a>\n";
