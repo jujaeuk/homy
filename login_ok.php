@@ -7,7 +7,7 @@ if(mysqli_num_rows($result)==0) $error_message="user name doesn't exist";
 else{
   $check=mysqli_fetch_object($result);
   if(crypt($_POST['password'],"onlyone")==$check->password){
-    setcookie("user",$check->name,0);
+    setcookie("user",$check->name,0,"/");
     echo "<meta http-equiv=\"refresh\" content=\"0;url=.\">\n";
   }
   else $error_message="password incorrect";
