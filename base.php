@@ -7,14 +7,7 @@ elseif(!isset($_COOKIE['user'])) include "login.php";
 else{
   echo "user: ".$_COOKIE['user']." (<a href=logout.php>logout</a>)\n";
   echo "<article>\n";
-  echo "<h3>users</h3>\n";
-  $que="select * from ".$homename."_users order by name";
-  $result=mysqli_query($connect,$que);
-  echo "<ul>\n";
-  while(@$check=mysqli_fetch_object($result)){
-    echo "<li>".$check->name."</li>\n";
-  }
-  echo "</ul>\n";
+  echo "<h3>title</h3>\n";
   echo "</article>\n";
 }
 ?>

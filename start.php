@@ -13,7 +13,7 @@ if($_POST['category']=="직접 입력"){
 }
 else{
   include "data/db_access.php";
-  $que="insert into ".$homename."_log (start,category,content) values (".time().",'".$_POST['category']."','".htmleitities($_POST['content'],ENT_QUOTES)."')";
+  $que="insert into ".$homename."_log (start,category,content) values (".time().",'".$_POST['category']."','".htmlentities($_POST['content'],ENT_QUOTES)."')";
   mysqli_query($connect,$que);
   echo "<meta http-equiv=\"refresh\" content=\"0;url=log.php\">\n";
 } 

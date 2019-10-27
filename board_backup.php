@@ -1,65 +1,28 @@
 <?
 include "lib.php";
 include "data/db_access.php";
-$boarddate=date("ymd");
-
-// a : chronological record
-$fp=fopen("data/board_a".$boarddate.".txt","w");
-$que="select * from ".$homename."_board order by time";
-$result=mysqli_query($connect,$que);
-$i=0;
-while(@$check=mysqli_fetch_object($result)){
-  fwrite($fp,"no. ".$check->no." ".html_entity_decode($check->title,ENT_QUOTES)." (".$check->writer.", ".date("Y-m-d H:i",$check->time).")\n");
-  fwrite($fp,html_entity_decode($check->content,ENT_QUOTES)."\n");
-  if($check->upper!=0){
-    $que="select * from ".$homename."_board where no=$check->upper";
-    $check_upper=mysqli_fetch_object(mysqli_query($connect,$que));
-    fwrite($fp,"upper: no.".$check_upper->no." ".html_entity_decode($check_upper->title,ENT_QUOTES)."\n");
-  }
-  $que="select * from ".$homename."_board where upper=".$check->no;
-  $result_lower=mysqli_query($connect,$que);
-  if(mysqli_num_rows($result_lower)>0){
-    fwrite($fp,"lower:\n");
-    while($check_lower=mysqli_fetch_object($result_lower)){
-      fwrite($fp,"no .".$check_lower->no." ".html_entity_decode($check_lower->title,ENT_QUOTES)."\n");
-    }
-  }
-  fwrite($fp,"\n");
-}
-fclose($fp);
-function subcontents($fp,$connect,$homename,$upper){
-  $que="select * from ".$homename."_board where upper=$upper order by time";
-  $result=mysqli_query($connect,$que);
-  if(mysqli_num_rows($result)){
-    while(@$check=mysqli_fetch_object($result)){
-      fwrite($fp,"no. ".$check->no." ".html_entity_decode($check->title,ENT_QUOTES)." (".$check->writer.", ".date("Y-m-d H:i",$check->time).")\n");
-      fwrite($fp,html_entity_decode($check->content,ENT_QUOTES)."\n");
-      if($check->upper!=0){
-        $que="select * from ".$homename."_board where no=$check->upper";
-        $check_upper=mysqli_fetch_object(mysqli_query($connect,$que));
-        fwrite($fp,"upper: no.".$check_upper->no." ".html_entity_decode($check_upper->title,ENT_QUOTES)."\n");
-      }
-      $que="select * from ".$homename."_board where upper=".$check->no;
-      $result_lower=mysqli_query($connect,$que);
-      if(mysqli_num_rows($result_lower)>0){
-        fwrite($fp,"lower:\n");
-        while($check_lower=mysqli_fetch_object($result_lower)){
-          fwrite($fp,"no .".$check_lower->no." ".html_entity_decode($check_lower->title,ENT_QUOTES)."\n");
-        }
-      }
-      fwrite($fp,"\n");
-      subcontents($fp,$connect,$homename,$check->no);
-    }
-  }
-}
-
-// b : hierarchical record
-$fp=fopen("data/board_b".$boarddate.".txt","w");
-subcontents($fp,$connect,$homename,0);
-fclose($fp);
 include "head.php";
-echo "<article>\n";
-echo "<a href=data/board_a".$boarddate.".txt>board_a".$boarddate.".txt</a>\n";
-echo "<a href=data/board_b".$boarddate.".txt>board_b".$boarddate.".txt</a>\n";
-echo "</article></div></div></body></html>\n";
+function subcontents_backup($connect,$homename,$upper,$fp){
+  $que="select * from ".$homename."_board where upper=$upper order by title";
+  $result=mysqli_query($connect,$que);
+  while(@$check=mysqli_fetch_object($result)){
+    fwrite($fp, "no. ".$check->no." ".$check->title." (".date("Y-m-d H:i",$check->time).")\n".html_entity_decode($check->content,ENT_QUOTES)."\n\n");
+    subcontents_backup($connect,$homename,$check->no,$fp);
+  }
+}
+if(!file_exists('data')) echo "<article>not installed <a href=install.php>install</a><article>\n";
+elseif(!isset($_COOKIE['user'])) include "login.php";
+else{
+  echo "user: ".$_COOKIE['user']." (<a href=logout.php>logout</a>)\n";
+  echo "<article>\n";
+  echo "<h3>board backup</h3>\n";
+  $fp=fopen("data/board_backup.txt","w");
+  subcontents_backup($connect,$homename,0,$fp);
+  fclose($fp);
+  echo "<a href=data/board_backup.txt>board_backup.txt</a>\n";
+  echo "</article>\n";
+}
 ?>
+</div></div>
+</body>
+</html>

@@ -1,13 +1,10 @@
-body,td,input,textarea,select,option{
-  font-family: 서울남산체, SeoulNamsan, Verdana;
+body,td,input,textarea{
+  font-family: 나눔고딕, Arial;
   font-size: 10pt;
-  line-height: 170%;
+  line-height: 180%;
 }
 body{
-  background-color: lightgrey;
   padding-top: 50px;
-  margin-left: 0px;
-  margin-right: 0px;
 }
 a:link{
   text-decoration: none;
@@ -16,71 +13,37 @@ a:hover{
   text-decoration: none;
   color: red;
 }
+
 header{
   position: fixed;
   top: 0px;
   left: 0px;
   padding-left: 30px;
   width: 100%;
-  color: grey;
-  background-color: darkblue;
-}
-.container{
-  display: flex;
-}
-.aside{
-  position: fixed;
-  width: 200px;
-}
-aside{
   background-color: white;
-  padding: 10px;
-  margin: 5px;
 }
-input.login{
-  width: 100px;
+div{
+  margin-top: 3px;
+  margin-bottom: 3px;
 }
-.left{
-  width: 200px;
-}
-.main{
-  width: 500px;
-}
-article{
-  background-color: white;
-  padding: 10px;
-  margin: 5px;
-}
-.writetitle{
-  width: 400px;
-}
-td.read{
-  border-top: 1px grey dotted;
-}
-td.content{
-  border-top: 1px grey dotted;
+#container{
   width: 100%;
 }
-td.readb{
-  border-top: 1px grey dotted;
-  border-bottom: 1px grey dotted;
+#aside{
+  width: 100%;
+  border-top: 1px dotted grey;
+  border-bottom: 1px dotted grey;
+  border-left: 1px dotted grey;
 }
-textarea{
-  width: 400px;
+#main{
+  width: 100%;
+  border-top: 1px dotted grey;
+  border-bottom: 1px dotted grey;
+  border-left: 1px dotted grey;
 }
-input.log{
-  width: 300px;
-}
-li.log{
-  display: inline;
-}
-input.log_loss{
-  width: 50px;
-}
-td.log_stat{
-  vertical-align: top;
-  border-right: 1px grey dotted;
-}
-td.log_stat_time{
-  text-align: right;
+.title{
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  width: 100%;
 }

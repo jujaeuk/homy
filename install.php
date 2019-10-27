@@ -2,18 +2,18 @@
 include "lib.php";
 include "head.php";
 ?>
-<article>
 <form method=post action=install_ok.php>
 <table>
-  <tr><td>home name</td><td><input type=text name=homename></td></tr>
-  <tr><td colspan=2>mysql</td></tr>
-  <tr><td>host</td><td><input type=text name=host></td></tr>
-  <tr><td>user</td><td><input type=text name=user></td></tr>
-  <tr><td>password</td><td><input type=password name=password></td></tr>
-  <tr><td>db</td><td><input type=text name=db></td></tr>
-  <tr><td colspan=2><input type=submit value=install><td></tr>
+<tr><td colspan=2><input type=radio name=install value='table'>table
+<input type=radio name=install value='skin' checked>skin</td><tr>
+<tr><td>home name</td><td><input type=text name=homename></td></tr>
+<tr><td>host</td><td><input type=text name=host></td></tr>
+<tr><td>user</td><td><input type=text name=user></td></tr>
+<tr><td>password</td><td><input type=password name=password></td></tr>
+<tr><td>db</td><td><input type=text name=db></td></tr>
+<tr><td colspan=2 align=center><input type=submit value=install></td><tr>
 </table>
-</form>
-</article>
+</form> 
 </div></div>
-</body></html>
+</body>
+</html>

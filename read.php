@@ -2,40 +2,49 @@
 include "lib.php";
 include "data/db_access.php";
 include "head.php";
-echo "<article>\n";
-if(isset($_COOKIE['user'])){
-  $que="select * from ".$homename."_board where no=".$_GET['no'];
+if(!file_exists('data')) echo "not installed <a href=install.php>install</a>\n";
+elseif(!isset($_COOKIE['user'])) include "login.php";
+else{
+  echo "user: ".$_COOKIE['user']." (<a href=logout.php>logout</a>)\n";
+  if(isset($_GET['no'])) $que="select * from ".$homename."_board where no=".$_GET['no'];
+  else $que="select * from ".$homename."_board order by time desc limit 1";
   @$check=mysqli_fetch_object(mysqli_query($connect,$que));
-  echo "<table>\n";
-  echo "<tr><td class=read>title</td><td class=content>".$check->title.
-    " (".$check->writer.", ".date("Y-m-d i:s",$check->time).") <a href=write.php?upper=$check->no>sub</a>\n";
-  if($_COOKIE['user']==$check->writer){
-    echo "<a href=modify.php?no=$check->no>mod</a>\n";
-    echo "<a href=delete.php?no=$check->no>del</a>\n";
+  echo "<article>\n";
+  echo "<h3>".$check->title."</h3>\n";
+  echo "<p>".date("Y-m-d H:i",$check->time)." <a href=write.php?upper=$check->no>sub</a> ".
+    "<a href=modify.php?no=$check->no>mod</a> <a href=delete.php?no=$check->no>del</a></p>\n";
+  echo "<p>".nl2br($check->content)."</p>\n";
+  echo "</article></div>\n";
+  echo "<div id=aside>\n";
+  echo "<h4>하위글</h4>\n";
+  $que="select * from ".$homename."_board where upper=".$check->no." order by time desc";
+  $result=mysqli_query($connect,$que);
+  $i=0;
+  while(@$check_sub=mysqli_fetch_object($result)){
+    if($i==0) echo "<ul>\n";
+    echo "<li><a href=read.php?no=$check_sub->no>$check_sub->title</a></li>\n";
+    $i++;
   }
-  echo "</td></tr>\n";
-  echo "<tr><td class=read>content</td><td class=content>".nl2br($check->content)."</td></tr>\n";
-  echo "<tr><td class=read>upper</td><td class=read>\n";
-  if($check->upper!=0){
+  if($i>0) echo "</ul>\n";
+  echo "<h4>동위글</h4>\n";
+  $que="select * from ".$homename."_board where upper=$check->upper order by time desc";
+  $result_peer=mysqli_query($connect,$que);
+  $i=0;
+  while(@$check_peer=mysqli_fetch_object($result_peer)){
+    if($i==0) echo "<ul>\n";
+    if($check_peer->no==$check->no) echo "<li>$check_peer->title</li>\n";
+    else echo "<li><a href=read.php?no=$check_peer->no>$check_peer->title</a></li>\n";
+    $i++;
+  }
+  if($i>0) echo "</ul>\n";
+  if($check->upper!=0){ 
+    echo "<h4>상위글</h4>\n";
     $que="select * from ".$homename."_board where no=$check->upper";
-    $check_upper=mysqli_fetch_object(mysqli_query($connect,$que));
-    echo "<a href=read.php?no=$check_upper->no>$check_upper->title</a>\n";
+    @$check_upper=mysqli_fetch_object(mysqli_query($connect,$que));
+    echo "<ul><li><a href=read.php?no=$check->upper>$check_upper->title</a></li></ul>\n";
   }
-  echo "</td></tr>\n";
-  echo "<tr><td class=readb>lower</td><td class=readb>\n";
-  $que="select * from ".$homename."_board where upper=".$_GET['no'];
-  $result_lower=mysqli_query($connect,$que);
-  if(mysqli_num_rows($result_lower)>0){
-    echo "<ul>\n";
-    while($check_lower=mysqli_fetch_object($result_lower)){
-      echo "<li><a href=read.php?no=$check_lower->no>$check_lower->title</a></li>\n";
-    }
-    echo "</ul>\n";
-  }
-  echo "</td></tr>\n";
-  echo "</table>\n";
 }
-else echo "login necessary\n";
-echo "</article>\n";
 ?>
-</div></div></body></html>
+</div></div>
+</body>
+</html>

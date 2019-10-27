@@ -1,26 +1,14 @@
 <?
 include "lib.php";
-include "data/db_access.php";
-$que="select * from ".$homename."_users where name='".$_COOKIE['user']."'";
-@$check=mysqli_fetch_object(mysqli_query($connect,$que));
-if($check->no==1){
-  $que="drop table ".$homename."_users";
-  mysqli_query($connect,$que);
-  $que="drop table ".$homename."_board";
-  mysqli_query($connect,$que);
-  $que="drop table ".$homename."_log";
-  mysqli_query($connect,$que);
-  $files=glob("data/*");
-  foreach($files as $file)
-    if(is_file($file)) unlink($file);
-  rmdir("data");
-  setcookie("user", $_COOKIE['user'],time()-3600);
-  echo "<meta http-equiv=\"refresh\" content=\"0;url=index.html\">\n";
-}
-else{
-  include "head.php";
-  echo "<article>you don't have the right</article>\n";
-}
+include "head.php";
 ?>
+<form method=post action=uninstall_ok.php>
+<table>
+<tr><td><input type=radio name=uninstall value='table'>table
+<input type=radio name=uninstall value='skin' checked>skin</td><tr>
+<tr><td align=center><input type=submit value=uninstall></td><tr>
+</table>
+</form> 
 </div></div>
-</body></html>
+</body>
+</html>
