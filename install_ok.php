@@ -2,8 +2,8 @@
 include "lib.php";
 include "head.php";
 $connect=mysqli_connect($_POST['host'],$_POST['user'],$_POST['password'],$_POST['db']) or die("DB connection error");
-if(mysqli_num_rows(mysqli_query($connect,"show tables like '".$_POST['homename']."_users'"))==0){
-  echo "ERROR: home does not exists<br><a href=install.php>back</a>\n";
+if((mysqli_num_rows(mysqli_query($connect,"show tables like '".$_POST['homename']."_users'"))==0)&&($_POST['install']=="skin")){
+  echo "ERROR: home does not exist<br><a href=install.php>back</a>\n";
 }
 else{
   mkdir("data");
