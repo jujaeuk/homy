@@ -14,8 +14,7 @@ else{
   $i=0;
   while(@$check=mysqli_fetch_object($result)){
     fwrite($fpc, $check->no.",".date("Y-m-d H:i:s",$check->start).",");
-    if($check->end>0) fwrite($fpc, date("Y-m-d H:i:s",$check->end).",");
-    else fwrite($fpc,",");
+    fwrite($fpc, date("Y-m-d H:i:s",$check->end).",");
     fwrite($fpc,$check->loss.",\"".$check->category."\",\"".html_entity_decode($check->content,ENT_QUOTES)."\"\n");
     if($date!=date("Ymd",$check->start)){
       if($i!=0) fwrite($fpt,"\n");
