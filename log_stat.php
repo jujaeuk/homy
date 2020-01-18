@@ -42,25 +42,23 @@ function stat_week($start,$end,$homename,$connect,$cate_list){
 include "lib.php";
 include "data/db_access.php";
 include "head.php";
-if(!file_exists('data')) echo "<article>not installed <a href=install.php>install</a><article>\n";
-elseif(!isset($_COOKIE['user'])) include "login.php";
-else{
-  echo "user: ".$_COOKIE['user']." (<a href=logout.php>logout</a>)\n";
-  echo "<article>\n";
-  echo "<h3>log stat</h3>\n";
-  $today=time();
-  $time_num=time_num($today);
-  $weekday=date("w",$today);
-  if($weekday==0) $weekday=7;
-  echo "<table><tr>\n";
-  $cate_list=stat_week($weekday-1,$weekday-8,$homename,$connect,$cate_list);
-  $cate_list=stat_week($weekday+6,$weekday-1,$homename,$connect,$cate_list);
-  $cate_list=stat_week($weekday+13,$weekday+6,$homename,$connect,$cate_list);
-  if(!is_mobile()) stat_week($weekday+20,$weekday+13,$homename,$connect,$cate_list);
-  echo "</tr></table>\n";
-  echo "</article>\n";
-  include "log_aside.php";
-}
+include "login.php";
+?>
+<div id=container <? if(!is_mobile()) echo "style=\"display: flex;\"";?>>
+<div id=main>
+<?
+echo "<h2>log stat</h2>\n";
+$today=time();
+$time_num=time_num($today);
+$weekday=date("w",$today);
+if($weekday==0) $weekday=7;
+echo "<table><tr>\n";
+$cate_list=stat_week($weekday-1,$weekday-8,$homename,$connect,$cate_list);
+$cate_list=stat_week($weekday+6,$weekday-1,$homename,$connect,$cate_list);
+$cate_list=stat_week($weekday+13,$weekday+6,$homename,$connect,$cate_list);
+if(!is_mobile()) stat_week($weekday+20,$weekday+13,$homename,$connect,$cate_list);
+echo "</tr></table>\n";
+include "log_menu.php";
 ?>
 </div></div>
 </body>

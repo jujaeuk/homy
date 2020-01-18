@@ -8,5 +8,3 @@
 </head>
 <body>
 <header><h1><a href=.>homy</a></h1></header>
-<div id=container <? if(!is_mobile()) echo "style=\"display: flex;\"";?>>
-<div id=main>

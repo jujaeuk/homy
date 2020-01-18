@@ -2,31 +2,29 @@
 include "lib.php";
 if($_POST['category']=="직접 입력"){
   include "head.php";
-  if(!file_exists('data')) echo "not installed <a href=install.php>install</a>\n";
-  elseif(!isset($_COOKIE['user'])) include "login.php";
-  else{
-    echo "user: ".$_COOKIE['user']." (<a href=logout.php>logout</a>)\n";
-    echo "<article>\n";
-    echo "<form method=post action=$PHP_SELF>\n";
-    echo "category <input type=text name=category>\n";
-    echo "<input type=hidden name=content value='".$_POST['content']."'>\n";
-    echo "<input type=hidden name=start_hour value=".$_POST['start_hour'].">\n";
-    echo "<input type=hidden name=start_min value=".$_POST['start_min'].">\n";
-    echo "<input type=hidden name=start_month value=".$_POST['start_month'].">\n";
-    echo "<input type=hidden name=start_day value=".$_POST['start_day'].">\n";
-    echo "<input type=hidden name=start_year value=".$_POST['start_year'].">\n";
-    echo "<input type=hidden name=loss value=".$_POST['loss'].">\n";
-    if($_POST['end_year']&&$_POST['end_month']&&$_POST['end_day']){
-      echo "<input type=hidden name=end_hour value=".$_POST['end_hour'].">\n";
-      echo "<input type=hidden name=end_min value=".$_POST['end_min'].">\n";
-      echo "<input type=hidden name=end_month value=".$_POST['end_month'].">\n";
-      echo "<input type=hidden name=end_day value=".$_POST['end_day'].">\n";
-      echo "<input type=hidden name=end_year value=".$_POST['end_year'].">\n";
-    }
-    echo "<input type=hidden name=no value=".$_POST['no'].">\n"; 
-    echo "<input type=submit value=start></form>\n";
-    echo "</article>\n";
+  include "login.php";
+  echo "<div id=container";
+  if(!is_mobile()) echo " style=\"display: flex;\"";
+  echo "><div id=main>\n";
+  echo "<form method=post action=$PHP_SELF>\n";
+  echo "category <input type=text name=category>\n";
+  echo "<input type=hidden name=content value='".$_POST['content']."'>\n";
+  echo "<input type=hidden name=start_hour value=".$_POST['start_hour'].">\n";
+  echo "<input type=hidden name=start_min value=".$_POST['start_min'].">\n";
+  echo "<input type=hidden name=start_month value=".$_POST['start_month'].">\n";
+  echo "<input type=hidden name=start_day value=".$_POST['start_day'].">\n";
+  echo "<input type=hidden name=start_year value=".$_POST['start_year'].">\n";
+  echo "<input type=hidden name=loss value=".$_POST['loss'].">\n";
+  if($_POST['end_year']&&$_POST['end_month']&&$_POST['end_day']){
+    echo "<input type=hidden name=end_hour value=".$_POST['end_hour'].">\n";
+    echo "<input type=hidden name=end_min value=".$_POST['end_min'].">\n";
+    echo "<input type=hidden name=end_month value=".$_POST['end_month'].">\n";
+    echo "<input type=hidden name=end_day value=".$_POST['end_day'].">\n";
+    echo "<input type=hidden name=end_year value=".$_POST['end_year'].">\n";
   }
+  echo "<input type=hidden name=no value=".$_POST['no'].">\n"; 
+  echo "<input type=submit value=start></form>\n";
+  include "log_menu.php";
   echo "</div></div>\n";
   echo "</body></html>\n";
 }

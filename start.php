@@ -2,12 +2,10 @@
 include "lib.php";
 if($_POST['category']=="직접 입력"){
   include "head.php";
-  echo "<article>\n";
   echo "<form method=post action=$PHP_SELF>\n";
   echo "category <input type=text name=category>\n";
   echo "<input type=hidden name=content value='".$_POST['content']."'>\n";
   echo "<input type=submit value=start></form>\n";
-  echo "</article>\n";
   echo "</div></div>\n";
   echo "</body></html>\n";
 }

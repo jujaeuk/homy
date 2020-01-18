@@ -14,8 +14,7 @@ else{
 }
 if($error_message){
   include "head.php";
-  echo "<article>\n";
   echo "ERROR: ".$error_message;
-  echo "</article></div></div></body></html>\n";
+  echo "</div></div></body></html>\n";
 }
 ?>

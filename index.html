@@ -2,25 +2,22 @@
 include "lib.php";
 include "data/db_access.php";
 include "head.php";
-if(!file_exists('data')) echo "not installed <a href=install.php>install</a>\n";
-elseif(!isset($_COOKIE['user'])) include "login.php";
-else{
-  echo "user: ".$_COOKIE['user']." (<a href=logout.php>logout</a>)\n";
-  echo "<article>\n";
-  echo "<h3>index</h3>\n";
-  subcontents($connect,$homename,0,0);
-  echo "</article>\n";
-  echo "</div>\n";
-  echo "<div id=aside>\n";
-  echo "<ul>\n";
-  echo "<li><a href=log.php>log</a></li>\n";
-  echo "<li><a href=write.php?upper=0>write</a></li>\n";
-  echo "<li><a href=board_backup.php>board backup</a></li>\n";
-  echo "<li><a href=users.php>users</a></li>\n";
-  echo "</ul>\n";
-}
+include "login.php";
 ?>
-</div>
-</div>
+<div id=container <? if(!is_mobile()) echo "style=\"display: flex;\"";?>>
+<div id=main>
+<?
+echo "<h2>index</h2>\n";
+subcontents($connect,$homename,0,0);
+echo "</div>\n";
+echo "<div id=menu>\n";
+echo "<ul>\n";
+echo "<li><a href=log.php>log</a></li>\n";
+echo "<li><a href=write.php?upper=0>write</a></li>\n";
+echo "<li><a href=board_backup.php>board backup</a></li>\n";
+echo "<li><a href=users.php>users</a></li>\n";
+echo "</ul>\n";
+?>
+</div></div>
 </body>
 </html>

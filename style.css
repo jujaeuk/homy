@@ -29,17 +29,15 @@ div{
 #container{
   width: 100%;
 }
-#aside{
-  width: 100%;
-  border-top: 1px dotted grey;
-  border-bottom: 1px dotted grey;
-  border-left: 1px dotted grey;
-}
 #main{
   width: 100%;
   border-top: 1px dotted grey;
   border-bottom: 1px dotted grey;
-  border-left: 1px dotted grey;
+}
+#menu{
+  width: 100%;
+  border-top: 1px dotted grey;
+  border-bottom: 1px dotted grey;
 }
 .title{
   border-top: none;
