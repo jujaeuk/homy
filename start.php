@@ -2,6 +2,11 @@
 include "lib.php";
 if($_POST['category']=="직접 입력"){
   include "head.php";
+  include "login.php";
+  echo "<div id=container";
+  if(!is_mobile()) echo " style=\"display: flex\"";
+  echo "><div id=main>\n";
+  echo "<h2>new category</h2>\n";
   echo "<form method=post action=$PHP_SELF>\n";
   echo "category <input type=text name=category>\n";
   echo "<input type=hidden name=content value='".$_POST['content']."'>\n";
