@@ -2,7 +2,6 @@
 include "lib.php";
 include "data/db_access.php";
 include "head.php";
-include "login.php";
 ?>
 <div id=container <? if(!is_mobile()) echo "style=\"display: flex;\"";?>>
 <div id=main>
@@ -20,7 +19,7 @@ echo "</article>\n";
 echo "</div>\n";
 echo "<div id=menu>\n";
 echo "<h4>하위글</h4>\n";
-$que="select * from ".$homename."_board where upper=".$check->no." order by time desc";
+$que="select * from ".$homename."_board where upper=".$check->no." order by $check->order_lower";
 $result=mysqli_query($connect,$que);
 $i=0;
 while(@$check_sub=mysqli_fetch_object($result)){
@@ -30,7 +29,11 @@ while(@$check_sub=mysqli_fetch_object($result)){
 }
 if($i>0) echo "</ul>\n";
 echo "<h4>동위글</h4>\n";
-$que="select * from ".$homename."_board where upper=$check->upper order by time desc";
+$que="select * from ".$homename."_board where no=$check->upper";
+$check_upper=mysqli_fetch_object(mysqli_query($connect,$que));
+if(!$check_upper->order_lower) $order_lower="title";
+else $order_lower=$check_upper->order_lower;
+$que="select * from ".$homename."_board where upper=$check->upper order by $order_lower";
 $result_peer=mysqli_query($connect,$que);
 $i=0;
 while(@$check_peer=mysqli_fetch_object($result_peer)){

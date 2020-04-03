@@ -9,7 +9,11 @@ function is_mobile(){
 }
 
 function subcontents($connect,$homename,$upper,$level){
-  $que="select * from ".$homename."_board where upper=$upper order by time";
+  $que="select * from ".$homename."_board where no=$upper";
+  $check_upper=mysqli_fetch_object(mysqli_query($connect,$que));
+  if(!$check_upper->order_lower) $order_lower="title";
+  else $order_lower=$check_upper->order_lower;
+  $que="select * from ".$homename."_board where upper=$upper order by $order_lower";
   $result=mysqli_query($connect,$que);
   if(mysqli_num_rows($result)){
     echo "<ul>\n";

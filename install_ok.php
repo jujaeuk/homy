@@ -37,7 +37,7 @@ else{
       writer char(32),
       content text,
       upper int,
-      order_lower char(8) default 'asc',
+      order_lower char(16) default 'asc',
       tree_visible char(8) default 'yes')";
     mysqli_query($connect,$que);
     $que="create table ".$_POST['homename']."_log(
