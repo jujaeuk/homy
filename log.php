@@ -2,7 +2,6 @@
 include "lib.php";
 include "data/db_access.php";
 include "head.php";
-include "login.php";
 ?>
 <div id=container <? if(!is_mobile()) echo "style=\"display: flex;\"";?>>
 <div id=main>
@@ -24,6 +23,7 @@ for($i=0;$i<sizeof($category);$i++){
 }
 echo "<option value='직접 입력'>직접 입력</option>\n";
 echo "</select>\n";
+echo "cont. <input type=checkbox name=cont value=yes>\n";
 echo "</td></tr>\n";
 echo "<tr><td>content</td><td><input type=text class=log name=content>\n";
 echo "<input type=submit value=start>\n";

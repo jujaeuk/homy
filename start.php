@@ -16,7 +16,17 @@ if($_POST['category']=="직접 입력"){
 }
 else{
   include "data/db_access.php";
-  $que="insert into ".$homename."_log (start,category,content) values (".time().",'".$_POST['category']."','".htmlentities($_POST['content'],ENT_QUOTES)."')";
+  $start=time();
+  if($_POST['cont']=="yes"){
+    $que="select * from ".$homename."_log order by start desc limit 1";
+    $check=mysqli_fetch_object(mysqli_query($connect,$que));
+    if($check->end) $start=$check->end;
+    else{
+      $que="update ".$homename."_log set end=".time()." where no=".$check->no;
+      mysqli_query($connect,$que);
+    }
+  } 
+  $que="insert into ".$homename."_log (start,category,content) values ($start,'".$_POST['category']."','".htmlentities($_POST['content'],ENT_QUOTES)."')";
   if($_POST['category']) mysqli_query($connect,$que);
   echo "<meta http-equiv=\"refresh\" content=\"0;url=log.php\">\n";
 } 
