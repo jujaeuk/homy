@@ -33,7 +33,7 @@ function stat_week($start,$end,$homename,$connect,$cate_list){
   echo "<table>\n";
   echo "<tr><td colspan=2>".date("m/d", $week_start_day)." - ".date("m/d", $week_end_day-24*60*60)."</td></tr>\n";
   for($i=0;$i<sizeof($cate_list);$i++){
-    echo "<tr><td>".$cate_list[$i]."</td><td align=right>".$time_list[$i]."</td></tr>\n";
+    if($cate_list[$i]!="기록") echo "<tr><td>".$cate_list[$i]."</td><td align=right>".$time_list[$i]."</td></tr>\n";
   }
   echo "</table>\n";
   echo "</td>\n";
@@ -42,7 +42,6 @@ function stat_week($start,$end,$homename,$connect,$cate_list){
 include "lib.php";
 include "data/db_access.php";
 include "head.php";
-include "login.php";
 ?>
 <div id=container <? if(!is_mobile()) echo "style=\"display: flex;\"";?>>
 <div id=main>
