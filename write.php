@@ -2,10 +2,8 @@
 include "lib.php";
 include "data/db_access.php";
 include "head.php";
-?>
-<div id=container <? if(!is_mobile()) echo "style=\"display: flex;\"";?>>
-<div id=main>
-<?
+if(is_mobile()) echo "<div id=containerm><div id=mainm>";
+else echo "<div id=container><div id=main>\n";
 echo "<h2>write</h2>\n";
 echo "<form method=post action=write_ok.php>\n";
 echo "<table><tr><td>title</td><td><input type=text name=title class=title></td></tr>\n";

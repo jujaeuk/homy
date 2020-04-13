@@ -42,10 +42,8 @@ function stat_week($start,$end,$homename,$connect,$cate_list){
 include "lib.php";
 include "data/db_access.php";
 include "head.php";
-?>
-<div id=container <? if(!is_mobile()) echo "style=\"display: flex;\"";?>>
-<div id=main>
-<?
+if(is_mobile()) echo "<div id=containerm><div id=mainm>";
+else echo "<div id=container><div id=main>\n";
 echo "<h2>log stat</h2>\n";
 $today=time();
 $time_num=time_num($today);

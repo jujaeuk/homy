@@ -2,11 +2,8 @@
 include "lib.php";
 include "data/db_access.php";
 include "head.php";
-include "login.php";
-?>
-<div id=container <? if(!is_mobile()) echo "style=\"display: flex;\"";?>>
-<div id=main>
-<?
+if(is_mobile()) echo "<div id=containerm><div id=mainm>";
+else echo "<div id=container><div id=main>\n";
 echo "<h2>log edit</h2>\n";
 $que="select * from ".$homename."_log where no=".$_GET['no'];
 @$check=mysqli_fetch_object(mysqli_query($connect,$que));
