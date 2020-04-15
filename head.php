@@ -11,14 +11,34 @@
 <?
 if(!isset($_COOKIE['user'])){
   echo "<form method=post action=login_ok.php>\n";
-  echo "user <input type=text name=username class=login";
-  if(is_mobile()) echo " size=10";
-  echo "> password <input type=password name=password class=login";
-  if(is_mobile()) echo " size=10";
-  echo "> <input type=submit value=login>\n";
+  if(is_mobile()){
+    if(get_platform()=="Android"){
+      echo "user <input type=text name=username class=login size=10>\n";
+      echo "password <input type=password name=password class=login size=10>\n";
+      echo "<input type=submit value=login>\n";
+      echo "</form></div></header></body></html>\n";
+    }
+    else{
+      echo "<table><tr><td>user</td><td><input type=text name=username class=login></td></tr>\n";
+      echo "<tr><td>password</td><td><input type=password name=password class=login></td></tr>\n";
+  echo "<tr><td colspan=2 align=center><input type=submit value=login><td></tr></table>\n";
   echo "</form></div></header></body></html>\n";
+    } 
+  }
+  else{
+    echo "user <input type=text name=username class=login>\n";
+    echo "password <input type=password name=password class=login>\n";
+    echo "<input type=submit value=login>\n";
+    echo "</form></div></header></body></html>\n";
+  }
   exit;
 }
-else echo "user: ".$_COOKIE['user']." (<a href=password.php class=header>password</a> <a href=logout.php class=header>logout</a>) <a href=log.php class=header>log</a> | <a href=board.php class=header>board</a>";
+else{
+  if(get_platform()=="iPhone"){
+    echo "<table><tr><td>user: ".$_COOKIE['user']."</td></tr>\n";
+    echo "<tr><td>(<a href=password.php class=header>password</a> <a href=logout.php class=header>logout</a>) <a href=log.php class=header>log</a> | <a href=board.php class=header>board</a></td></tr></table>";
+  }
+  else echo "user: ".$_COOKIE['user']." (<a href=password.php class=header>password</a> <a href=logout.php class=header>logout</a>) <a href=log.php class=header>log</a> | <a href=board.php class=header>board</a>";
+}
 ?>
 </div></header>
