@@ -2,10 +2,8 @@
 include "lib.php";
 include "data/db_access.php";
 include "head.php";
-?>
-<div id=container <? if(!is_mobile()) echo "style=\"display: flex;\"";?>>
-<div id=main>
-<?
+if(is_mobile()) echo "<div id=containerm><div id=mainm>";
+else echo "<div id=container><div id=main>\n";
 echo "<h2>read</h2>\n";
 if(isset($_GET['no'])) $que="select * from ".$homename."_board where no=".$_GET['no'];
 else $que="select * from ".$homename."_board order by time desc limit 1";
@@ -17,7 +15,8 @@ echo "<p>".date("Y-m-d H:i",$check->time)." <a href=write.php?upper=$check->no>s
 echo "<p>".nl2br($check->content)."</p>\n";
 echo "</article>\n";
 echo "</div>\n";
-echo "<div id=menu>\n";
+if(is_mobile()) echo "<div id=menum>\n";
+else echo "<div id=menu>\n";
 echo "<h4>하위글</h4>\n";
 $que="select * from ".$homename."_board where upper=".$check->no." order by $check->order_lower";
 $result=mysqli_query($connect,$que);
