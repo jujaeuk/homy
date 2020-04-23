@@ -23,11 +23,16 @@ function subcontents($connect,$homename,$upper,$level){
   $result=mysqli_query($connect,$que);
   if(mysqli_num_rows($result)){
     echo "<ul>\n";
-    $level++;
     while(@$check=mysqli_fetch_object($result)){
       echo "<li><a href=read.php?no=$check->no>$check->title</a>\n";
+      $que="select * from ".$homename."_board where upper=$check->no";
+      $check_sub=mysqli_fetch_object(mysqli_query($connect,$que));
+      if($check_sub){
+        if($check->showlist==0) echo "<a href=open.php?no=$check->no>(open)</a>\n";
+        else echo "<a href=close.php?no=$check->no>(close)</a>\n";
+      }
       echo "<a href=write.php?upper=$check->no>+</a>\n";
-      if($level<3) subcontents($connect,$homename,$check->no,$level);
+      if($check->showlist==1) subcontents($connect,$homename,$check->no,$level);
       echo "</li>\n";
     }
     echo "</ul>\n";
