@@ -26,8 +26,7 @@ else{
       mysqli_query($connect,$que);
     }
   } 
-  if($_POST['category']=="기록") $que="insert into ".$homename."_log (start,end,category,content) values ($start,$start,'".$_POST['category']."','".htmlentities($_POST['content'],ENT_QUOTES)."')";
-  else $que="insert into ".$homename."_log (start,category,content) values ($start,'".$_POST['category']."','".htmlentities($_POST['content'],ENT_QUOTES)."')";
+  $que="insert into ".$homename."_log (start,category,content) values ($start,'".$_POST['category']."','".htmlentities($_POST['content'],ENT_QUOTES)."')";
   if($_POST['category']) mysqli_query($connect,$que);
   echo "<meta http-equiv=\"refresh\" content=\"0;url=log.php\">\n";
 } 
