@@ -2,7 +2,6 @@
 include "lib.php";
 include "data/db_access.php";
 include "head.php";
-include "login.php";
 echo "<div id=container";
 if(!is_mobile()) echo " style=\"display: flex;\"";
 echo "><div id=main>\n";
