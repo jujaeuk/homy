@@ -38,7 +38,8 @@ else{
       content text,
       upper int,
       order_lower char(16) default 'asc',
-      showlist boolean default 1)";
+      showlist boolean default 1,
+      timeline tinyint default 0)";
     mysqli_query($connect,$que);
     $que="create table ".$_POST['homename']."_log(
       no int not null auto_increment,

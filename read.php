@@ -14,6 +14,19 @@ echo "<p>".date("Y-m-d H:i",$check->time)." <a href=write.php?upper=$check->no>s
   "<a href=modify.php?no=$check->no>mod</a> <a href=delete.php?no=$check->no>del</a></p>\n";
 echo "<p>".nl2br($check->content)."</p>\n";
 echo "</article>\n";
+
+if($check->timeline==1){
+  echo "<h4>timeline</h4>\n";
+  $que="select * from ".$homename."_board where upper=$check->no order by time desc";
+  $result_sub=mysqli_query($connect,$que);
+  while($check_sub=mysqli_fetch_object($result_sub)){
+    echo "<article>\n";
+    echo "<b>$check_sub->title</b>\n";
+    echo "<p>".date("Y-m-d H:1",$check_sub->time)."</p>\n";
+    echo "<p>".nl2br($check_sub->content)."</p>\n";
+    echo "</article>";
+  }
+}
 echo "</div>\n";
 if(is_mobile()) echo "<div id=menum>\n";
 else echo "<div id=menu>\n";
