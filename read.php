@@ -17,7 +17,7 @@ echo "</article>\n";
 
 if($check->timeline==1){
   echo "<h4>timeline</h4>\n";
-  $que="select * from ".$homename."_board where upper=$check->no order by time desc";
+  $que="select * from ".$homename."_board where upper=$check->no order by $check->order_lower";
   $result_sub=mysqli_query($connect,$que);
   while($check_sub=mysqli_fetch_object($result_sub)){
     echo "<article>\n";
