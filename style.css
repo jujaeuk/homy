@@ -5,7 +5,7 @@ body,td,input,textarea{
 }
 body{
   background-color: lightgrey;
-  margin-top: 50px;
+  margin-top: 75px;
   padding-top: 12px;
   margin-left: 0px;
   margin-right: 0px;
@@ -31,6 +31,10 @@ header{
   width: 950px;
   font-size: 9pt;
   line-height: 59px;
+}
+#topmenu{
+  margin: auto;
+  width: 950px;
 }
 .login{
   font-size: 8pt;

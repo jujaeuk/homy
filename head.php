@@ -38,7 +38,18 @@ else{
     echo "<table><tr><td>user: ".$_COOKIE['user']."</td></tr>\n";
     echo "<tr><td>(<a href=password.php class=header>password</a> <a href=logout.php class=header>logout</a>) <a href=log.php class=header>log</a> | <a href=board.php class=header>board</a></td></tr></table>";
   }
-  else echo "user: ".$_COOKIE['user']." (<a href=password.php class=header>password</a> <a href=logout.php class=header>logout</a>) <a href=log.php class=header>log</a> | <a href=board.php class=header>board</a>";
+  else echo "user: ".$_COOKIE['user']." (<a href=password.php class=header>password</a> <a href=logout.php class=header>logout</a>) <a href=log.php class=header>log</a>";
 }
+?>
+</div>
+<div id=topmenu>
+<?
+$que="select * from ".$homename."_board where upper=0";
+$result=mysqli_query($connect,$que);
+echo "&nbsp;&nbsp;<a href=board.php class=header>board\n";
+while($check=mysqli_fetch_object($result)){
+  echo "| <a class=header href=board.php?upper=$check->no>$check->title</a>\n";
+  $count++;
+} 
 ?>
 </div></header>
