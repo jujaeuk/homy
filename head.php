@@ -46,7 +46,7 @@ else{
 <?
 $que="select * from ".$homename."_board where upper=0";
 $result=mysqli_query($connect,$que);
-echo "&nbsp;&nbsp;<a href=board.php class=header>board\n";
+echo "&nbsp;&nbsp;<a href=board.php class=header>board</a>\n";
 while($check=mysqli_fetch_object($result)){
   echo "| <a class=header href=board.php?upper=$check->no>$check->title</a>\n";
   $count++;
