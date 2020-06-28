@@ -1,0 +1,7 @@
+<?
+include "lib.php";
+include "data/db_access.php";
+$que="update ".$homename."_board set showlist=1 where no=".$_GET['no'];
+mysqli_query($connect,$que);
+?>
+<meta http-equiv="refresh" content="0;url=board.php?upper=<?echo $_GET['upper'];?>">
