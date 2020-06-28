@@ -36,7 +36,7 @@ if(!isset($_COOKIE['user'])){
 else{
   if(get_platform()=="iPhone"){
     echo "<table><tr><td>user: ".$_COOKIE['user']."</td></tr>\n";
-    echo "<tr><td>(<a href=password.php class=header>password</a> <a href=logout.php class=header>logout</a>) <a href=log.php class=header>log</a> | <a href=board.php class=header>board</a></td></tr></table>";
+    echo "<tr><td>(<a href=password.php class=header>password</a> <a href=logout.php class=header>logout</a>) <a href=log.php class=header>log</a></td></tr></table>";
   }
   else echo "user: ".$_COOKIE['user']." (<a href=password.php class=header>password</a> <a href=logout.php class=header>logout</a>) <a href=log.php class=header>log</a>";
 }
