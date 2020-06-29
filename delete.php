@@ -16,6 +16,6 @@ if(mysqli_num_rows($result)){
 else{
   $que="select * from ".$homename."_board where no=".$_GET['no'];
   $check=mysqli_fetch_object(mysqli_query($connect,$que));
-  echo "delete '".$check->title."' (".date("Ymd H:i",$check->time).") are you sure? <a href=delete_ok.php?no=".$_GET['no'].">yes</a> <a href=read.php?no=".$_GET['no'].">no</a>\n";
+  echo "delete '".$check->title."' (".date("Ymd H:i",$check->time).") are you sure? <a href=delete_ok.php?no=".$_GET['no']."&upper=".$_GET['upper'].">yes</a> <a href=read.php?no=".$_GET['no'].">no</a>\n";
 }
 ?>
