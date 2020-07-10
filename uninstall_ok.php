@@ -8,6 +8,10 @@ if($check->no==1){
   foreach($files as $file)
     if(is_file($file)) unlink($file);
   rmdir("data");
+  $files=glob("files/*");
+  foreach($files as $file)
+    if(is_file($file)) unlink($file);
+  rmdir("files");
   if($_POST['uninstall']=="table"){
     $que="drop table ".$homename."_users";
     mysqli_query($connect,$que);

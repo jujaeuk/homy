@@ -13,6 +13,7 @@ echo "<h3>".$check->title."</h3>\n";
 echo "<p>".date("Y-m-d H:i",$check->time)." <a href=write.php?upper=$check->no>sub</a> ".
   "<a href=modify.php?no=$check->no>mod</a> <a href=delete.php?no=$check->no&upper=$check->upper>del</a></p>\n";
 echo "<p>".nl2br($check->content)."</p>\n";
+if($check->file) echo "<p>file: <a href=files/".$check->file.">".$check->file."</a></p>\n";
 echo "</article>\n";
 
 if($check->timeline==1){

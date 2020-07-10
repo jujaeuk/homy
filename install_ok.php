@@ -10,6 +10,7 @@ if((mysqli_num_rows(mysqli_query($connect,"show tables like '".$_POST['homename'
   echo "ERROR: home does not exist<br><a href=install.php>back</a>\n";
 }
 else{
+  mkdir("files");
   mkdir("data");
   $fp=fopen("data/homename.txt","w");
   fwrite($fp,$_POST['homename']."\n");
@@ -39,7 +40,8 @@ else{
       upper int,
       order_lower char(16) default 'asc',
       showlist boolean default 1,
-      timeline tinyint default 0)";
+      timeline tinyint default 0,
+      file char(128))";
     mysqli_query($connect,$que);
     $que="create table ".$_POST['homename']."_log(
       no int not null auto_increment,
