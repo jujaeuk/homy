@@ -38,8 +38,7 @@ else{
       writer char(32),
       content text,
       upper int,
-      order_lower char(16) default 'asc',
-      timeline tinyint default 0,
+      order_lower char(16) default 'time',
       file char(128))";
     mysqli_query($connect,$que);
     $que="create table ".$_POST['homename']."_log(

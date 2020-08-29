@@ -15,20 +15,8 @@ echo "<p>".date("Y-m-d H:i",$check->time)." <a href=write.php?upper=$check->no>s
 echo "<p>".nl2br($check->content)."</p>\n";
 if($check->file) echo "<p>file: <a href=files/".$check->file.">".$check->file."</a></p>\n";
 echo "</article>\n";
-
-if($check->timeline==1){
-  echo "<h4>timeline</h4>\n";
-  $que="select * from ".$homename."_board where upper=$check->no order by $check->order_lower";
-  $result_sub=mysqli_query($connect,$que);
-  while($check_sub=mysqli_fetch_object($result_sub)){
-    echo "<article>\n";
-    echo "<b>$check_sub->title</b>\n";
-    echo "<p>".date("Y-m-d H:1",$check_sub->time)."</p>\n";
-    echo "<p>".nl2br($check_sub->content)."</p>\n";
-    echo "</article>";
-  }
-}
 echo "</div>\n";
+
 if(is_mobile()) echo "<div id=menum>\n";
 else echo "<div id=menu>\n";
 echo "<h4>하위글</h4>\n";
