@@ -39,7 +39,6 @@ else{
       content text,
       upper int,
       order_lower char(16) default 'asc',
-      showlist boolean default 1,
       timeline tinyint default 0,
       file char(128))";
     mysqli_query($connect,$que);
