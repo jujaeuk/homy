@@ -14,7 +14,7 @@ function is_mobile(){
   else return false;
 }
 
-function subcontents($connect,$homename,$upper){
+function subcontents($connect,$homename,$upper,$level){
   $que="select * from ".$homename."_board where no=$upper";
   $check_upper=mysqli_fetch_object(mysqli_query($connect,$que));
   if(!$check_upper->order_lower) $order_lower="title";
@@ -28,7 +28,7 @@ function subcontents($connect,$homename,$upper){
       $que="select * from ".$homename."_board where upper=$check->no";
       $check_sub=mysqli_fetch_object(mysqli_query($connect,$que));
       echo "<a href=write.php?upper=$check->no>+</a>\n";
-      subcontents($connect,$homename,$check->no);
+      if($level<1) subcontents($connect,$homename,$check->no,$level+1);
       echo "</li>\n";
     }
     echo "</ul>\n";
