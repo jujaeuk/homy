@@ -1,5 +1,6 @@
 <?
 include "lib.php";
+include "data/db_access.php";
 include "head.php";
 $que="select * from ".$homename."_users where name='".$_COOKIE['user']."'";
 @$check=mysqli_fetch_object(mysqli_query($connect,$que));
@@ -13,7 +14,9 @@ if($check->no==1){
   echo "</table>\n";
   echo "</form>\n";
 }
-else echo "<article>you don't have the right</article>\n";
+else{
+  echo "<article>you don't have the right</article>\n";
+}
 ?>
 </div><div id=menu></div></div>
 </body>
