@@ -4,8 +4,8 @@ include "head.php";
 ?>
 <form method=post action=install_ok.php>
 <table>
-<tr><td colspan=2><input type=radio name=install value='table'>table
-<input type=radio name=install value='skin' checked>skin</td><tr>
+<tr><td colspan=2><input type=radio name=install value='table'>full(table)
+<input type=radio name=install value='skin' checked>skin only</td><tr>
 <tr><td>home name</td><td><input type=text name=homename></td></tr>
 <tr><td>host</td><td><input type=text name=host></td></tr>
 <tr><td>user</td><td><input type=text name=user></td></tr>
@@ -13,7 +13,7 @@ include "head.php";
 <tr><td>db</td><td><input type=text name=db></td></tr>
 <tr><td colspan=2 align=center><input type=submit value=install></td><tr>
 </table>
-</form> 
+</form>
 </div></div>
 </body>
 </html>

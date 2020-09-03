@@ -1,6 +1,6 @@
 <?
 include "lib.php";
-include "head.php";
+include "head_join.php";
 ?>
 <div id=container <? if(!is_mobile()) echo "style=\"display: flex;\"";?>>
 <div id=main>

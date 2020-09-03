@@ -21,8 +21,8 @@ if(!isset($_COOKIE['user'])){
     else{
       echo "<table><tr><td>user</td><td><input type=text name=username class=login></td></tr>\n";
       echo "<tr><td>password</td><td><input type=password name=password class=login></td></tr>\n";
-  echo "<tr><td colspan=2 align=center><input type=submit value=login><td></tr></table>\n";
-  echo "</form></div></header></body></html>\n";
+      echo "<tr><td colspan=2 align=center><input type=submit value=login><td></tr></table>\n";
+      echo "</form></div></header></body></html>\n";
     } 
   }
   else{
