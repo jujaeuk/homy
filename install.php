@@ -2,6 +2,8 @@
 include "lib.php";
 include "head_join.php";
 ?>
+<div id=container><div id=main>
+<h2>install</h2>
 <form method=post action=install_ok.php>
 <table>
 <tr><td colspan=2><input type=radio name=install value='table'>full(table)
@@ -14,6 +16,6 @@ include "head_join.php";
 <tr><td colspan=2 align=center><input type=submit value=install></td><tr>
 </table>
 </form>
-</div></div>
+</div><div id=menu></div>
 </body>
 </html>
