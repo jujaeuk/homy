@@ -1,6 +1,6 @@
 <?
 include "lib.php";
-include "head.php";
+include "head_join.php";
 ?>
 <form method=post action=install_ok.php>
 <table>
