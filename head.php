@@ -16,21 +16,19 @@ if(!isset($_COOKIE['user'])){
       echo "user <input type=text name=username class=login size=10>\n";
       echo "password <input type=password name=password class=login size=10>\n";
       echo "<input type=submit value=login>\n";
-      echo "</form></div></header></body></html>\n";
     }
     else{
       echo "<table><tr><td>user</td><td><input type=text name=username class=login></td></tr>\n";
       echo "<tr><td>password</td><td><input type=password name=password class=login></td></tr>\n";
-      echo "<tr><td colspan=2 align=center><input type=submit value=login><td></tr></table>\n";
-      echo "</form></div></header></body></html>\n";
+      echo "<tr><td colspan=2 align=center><input type=submit value=login></td></tr></table>\n";
     } 
   }
   else{
     echo "user <input type=text name=username class=login>\n";
     echo "password <input type=password name=password class=login>\n";
     echo "<input type=submit value=login>\n";
-    echo "</form></div></header></body></html>\n";
   }
+  echo "</form></div></header><div id=container><div id=main><a href=join.php>join</a></div><div id=menu></div></div></body</html>\n";
   exit;
 }
 else{
