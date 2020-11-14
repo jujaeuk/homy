@@ -11,6 +11,7 @@ if($upper){
   $que="select * from ".$homename."_board where no=$upper";
   $check_upper=mysqli_fetch_object(mysqli_query($connect,$que));
   echo "<tr><td>upper</td><td>$check_upper->title</td></tr>\n";
+}
 echo "<tr><td>order of lower</td><td><select name=order_lower>\n";
 echo "<option value='time' selected>시간순</option>\n";
 echo "<option value='time desc'>시간역순</option>\n";
