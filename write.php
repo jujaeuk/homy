@@ -7,10 +7,14 @@ else echo "<div id=container><div id=main>\n";
 echo "<h2>write</h2>\n";
 echo "<form method=post enctype=\"multipart/form-data\" action=write_ok.php>\n";
 echo "<table><tr><td>title</td><td><input type=text name=title class=title></td></tr>\n";
+if($upper){
+  $que="select * from ".$homename."_board where no=$upper";
+  $check_upper=mysqli_fetch_object(mysqli_query($connect,$que));
+  echo "<tr><td>upper</td><td>$check_upper->title</td></tr>\n";
 echo "<tr><td>order of lower</td><td><select name=order_lower>\n";
-echo "<option value='time' selected>time ascending</option>\n";
-echo "<option value='time desc'>time descending</option>\n";
-echo "<option value='title'>title ascending</option>\n";
+echo "<option value='time' selected>시간순</option>\n";
+echo "<option value='time desc'>시간역순</option>\n";
+echo "<option value='title'>가나다순</option>\n";
 echo "</select></td></tr>\n";
 echo "<tr><td>content</td><td><textarea name=content\n";
 if(is_mobile()) echo "cols=40 rows=10";
