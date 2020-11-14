@@ -7,8 +7,8 @@ else echo "<div id=container><div id=main>\n";
 echo "<h2>write</h2>\n";
 echo "<form method=post enctype=\"multipart/form-data\" action=write_ok.php>\n";
 echo "<table><tr><td>title</td><td><input type=text name=title class=title></td></tr>\n";
-if($upper){
-  $que="select * from ".$homename."_board where no=$upper";
+if($_GET['upper']){
+  $que="select * from ".$homename."_board where no=".$_GET['upper'];
   $check_upper=mysqli_fetch_object(mysqli_query($connect,$que));
   echo "<tr><td>upper</td><td>$check_upper->title</td></tr>\n";
 }
