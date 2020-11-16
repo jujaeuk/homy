@@ -1,7 +1,9 @@
 <?
-$fp=fopen("data/homename.txt","r");
-$homename=trim(fgets($fp));
-fclose($fp);
+if(file_exists("data/homename.txt")){
+  $fp=fopen("data/homename.txt","r");
+  $homename=trim(fgets($fp));
+  fclose($fp);
+}
 
 function get_platform(){
   if(preg_match('/iPhone/i',$_SERVER['HTTP_USER_AGENT'])) return "iPhone";
