@@ -34,10 +34,7 @@ if(!isset($_COOKIE['user'])){
 else{
   if(get_platform()=="iPhone"){
     echo "<table><tr><td>user: ".$_COOKIE['user']."</td></tr>\n";
-    echo "<tr><td>(<a href=password.php class=header>password</a> <a href=logout.php class=header>logout</a>)";
-    $que="select * from ".$homename."_users where name='".$_COOKIE['user']."'";
-    @$check=mysqli_fetch_object(mysqli_query($connect,$que));
-    if($check->no==1) echo "<a href=log.php class=header>log</a></td></tr></table>";
+    echo "<tr><td>(<a href=password.php class=header>password</a> <a href=logout.php class=header>logout</a>) <a href=log.php class=header>log</a></td></tr></table>";
   }
   else echo "user: ".$_COOKIE['user']." (<a href=password.php class=header>password</a> <a href=logout.php class=header>logout</a>) <a href=log.php class=header>log</a>";
 }
