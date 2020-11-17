@@ -7,7 +7,7 @@
 <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-<header><div id=head><a href=index.php><img src=homy_logo.png align=left></a>
+<header><div id=head><a href=.><img src=homy_logo.png align=left></a>
 <?
 if(!isset($_COOKIE['user'])){
   echo "<form method=post action=login_ok.php>\n";
@@ -28,24 +28,33 @@ if(!isset($_COOKIE['user'])){
     echo "password <input type=password name=password class=login>\n";
     echo "<input type=submit value=login>\n";
   }
-  echo "</form></div></header><div id=container><div id=main><a href=join.php>join</a></div><div id=menu></div></div></body></html>\n";
+  echo "</form></div></header><div id=container><div id=main>subscription not available</div><div id=menu></div></div></body></html>\n";
   exit;
 }
 else{
   if(get_platform()=="iPhone"){
     echo "<table><tr><td>user: ".$_COOKIE['user']."</td></tr>\n";
-    echo "<tr><td>(<a href=password.php class=header>password</a> <a href=logout.php class=header>logout</a>) <a href=log.php class=header>log</a></td></tr></table>";
+	echo "<tr><td>(<a href=password.php class=header>password</a> <a href=logout.php class=header>logout</a>)\n";
+    $que="select * from ".$homename."_users where name='".$_COOKIE['user']."'";
+    @$check=mysqli_fetch_object(mysqli_query($connect,$que));
+    if($check->no==1) echo "<a href=log.php class=header>log</a>";
+	echo "</td></tr></table>";
   }
-  else echo "user: ".$_COOKIE['user']." (<a href=password.php class=header>password</a> <a href=logout.php class=header>logout</a>) <a href=log.php class=header>log</a>";
+  else{
+    echo "user: ".$_COOKIE['user']." (<a href=password.php class=header>password</a> <a href=logout.php class=header>logout</a>)\n";
+    $que="select * from ".$homename."_users where name='".$_COOKIE['user']."'";
+    @$check=mysqli_fetch_object(mysqli_query($connect,$que));
+    if($check->no==1) echo "<a href=log.php class=header>log</a>";
+  }
 }
 ?>
 </div>
 <div id=topmenu>
 <?
 $que="select * from ".$homename."_board where upper=0 order by title";
-$result=mysqli_query($connect,$que);
+@$result=mysqli_query($connect,$que);
 echo "&nbsp;&nbsp;<a href=index.html class=header>index</a>\n";
-while($check=mysqli_fetch_object($result)){
+while(@$check=mysqli_fetch_object($result)){
   echo "| <a class=header href=read.php?no=$check->no>$check->title</a>\n";
   $count++;
 } 
