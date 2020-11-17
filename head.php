@@ -7,7 +7,7 @@
 <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-<header><div id=head><a href=.><img src=homy_logo.png align=left></a>
+<header><div id=head><a href=index.php><img src=homy_logo.png align=left></a>
 <?
 if(!isset($_COOKIE['user'])){
   echo "<form method=post action=login_ok.php>\n";
