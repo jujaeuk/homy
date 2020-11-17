@@ -15,25 +15,4 @@ function is_mobile(){
   if(preg_match('/(iPhone|Android)/i',$_SERVER['HTTP_USER_AGENT'])) return true;
   else return false;
 }
-
-function subcontents($connect,$homename,$upper,$level){
-  $que="select * from ".$homename."_board where no=$upper";
-  $check_upper=mysqli_fetch_object(mysqli_query($connect,$que));
-  if(!$check_upper->order_lower) $order_lower="title";
-  else $order_lower=$check_upper->order_lower;
-  $que="select * from ".$homename."_board where upper=$upper order by $order_lower";
-  $result=mysqli_query($connect,$que);
-  if(mysqli_num_rows($result)){
-    echo "<ul>\n";
-    while(@$check=mysqli_fetch_object($result)){
-      echo "<li><a href=read.php?no=$check->no>$check->title</a>\n";
-      $que="select * from ".$homename."_board where upper=$check->no";
-      $check_sub=mysqli_fetch_object(mysqli_query($connect,$que));
-      echo "<a href=write.php?upper=$check->no>+</a>\n";
-      if($level<1) subcontents($connect,$homename,$check->no,$level+1);
-      echo "</li>\n";
-    }
-    echo "</ul>\n";
-  }
-}
 ?>
