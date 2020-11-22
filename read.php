@@ -19,17 +19,13 @@ echo "</div>\n";
 
 if(is_mobile()) echo "<div id=menum>\n";
 else echo "<div id=menu>\n";
-echo "<h4>하위글</h4>\n";
-$que="select * from ".$homename."_board where upper=".$check->no." order by $check->order_lower";
-$result=mysqli_query($connect,$que);
-$i=0;
-while(@$check_sub=mysqli_fetch_object($result)){
-  if($i==0) echo "<ul>\n";
-  echo "<li><a href=read.php?no=$check_sub->no>$check_sub->title</a></li>\n";
-  $i++;
+if($check->upper!=0){ 
+  echo "<h4>윗글</h4>\n";
+  $que="select * from ".$homename."_board where no=$check->upper";
+  @$check_upper=mysqli_fetch_object(mysqli_query($connect,$que));
+  echo "<ul><li><a href=read.php?no=$check->upper>$check_upper->title</a></li></ul>\n";
 }
-if($i>0) echo "</ul>\n";
-echo "<h4>동위글</h4>\n";
+echo "<h4>옆글</h4>\n";
 $que="select * from ".$homename."_board where no=$check->upper";
 $check_upper=mysqli_fetch_object(mysqli_query($connect,$que));
 if(!$check_upper->order_lower) $order_lower="title";
@@ -44,12 +40,17 @@ while(@$check_peer=mysqli_fetch_object($result_peer)){
   $i++;
 }
 if($i>0) echo "</ul>\n";
-if($check->upper!=0){ 
-  echo "<h4>상위글</h4>\n";
-  $que="select * from ".$homename."_board where no=$check->upper";
-  @$check_upper=mysqli_fetch_object(mysqli_query($connect,$que));
-  echo "<ul><li><a href=read.php?no=$check->upper>$check_upper->title</a></li></ul>\n";
+echo "<h4>아랫글</h4>\n";
+$que="select * from ".$homename."_board where upper=".$check->no." order by $check->order_lower";
+$result=mysqli_query($connect,$que);
+$i=0;
+while(@$check_sub=mysqli_fetch_object($result)){
+  if($i==0) echo "<ul>\n";
+  echo "<li><a href=read.php?no=$check_sub->no>$check_sub->title</a></li>\n";
+  $i++;
 }
+if($i>0) echo "</ul>\n";
+
 ?>
 </div></div>
 </body>
