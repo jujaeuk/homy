@@ -51,6 +51,13 @@ else{
       category char(32),
       content char(128))";
     mysqli_query($connect,$que);
+    $que="create table ".$_POST['homename']."_files(
+      no int not null auto_increment,
+      unique(no),
+      primary key(no),
+      boardno int,
+      filename char)";
+    mysqli_query($connect,$que);
   }
   include "data/db_access.php";
   echo "home ".$_POST['homename']." created<br><a href=.>home</a>\n";
