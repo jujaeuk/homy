@@ -6,5 +6,5 @@ $que="insert into ".$homename."_board (title,time,writer,content,upper,order_low
 mysqli_query($connect,$que);
 
 if($_POST['upper']!=0) echo "<meta http-equiv=\"refresh\" content=\"0;url=read.php?no=".$_POST['upper']."\">\n";
-else echo "<meta http-equiv=\"refresh\" content=\"0;url=index.html\">\n";
+else echo "<meta http-equiv=\"refresh\" content=\"0;url=index.php\">\n";
 ?>
