@@ -16,6 +16,8 @@ if($_POST['uninstall']=="table"){
   mysqli_query($connect,$que);
   $que="drop table ".$homename."_log";
   mysqli_query($connect,$que);
+  $que="drop table ".$homename."_files";
+  mysqli_query($connect,$que);
 }
   setcookie("user", $_COOKIE['user'],time()-3600,".");
   echo "<meta http-equiv=\"refresh\" content=\"0;url=index.html\">\n";
