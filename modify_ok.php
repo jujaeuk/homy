@@ -8,7 +8,7 @@ if($_POST['fdel']=="ok"){
   $que="update ".$homename."_board set file='' where no=".$_POST['no'];
   mysqli_query($connect,$que);
 }
-if(isset($_FILES)){
+if($_FILES){
   copy($_FILES['file']['tmp_name'],"files/".$_FILES['file']['name']);
   $que="update ".$homename."_board set file='".$_FILES['file']['name']."' where no=".$_POST['no'];
   mysqli_query($connect,$que);
