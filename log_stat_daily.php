@@ -1,5 +1,6 @@
 <?
 function time_num($date){
+  $time_num = new \ stdClass();
   $time_num->year=date("Y",$date);
   $time_num->month=date("m",$date);
   $time_num->day=date("d",$date);
@@ -17,14 +18,16 @@ function stat_day($day,$homename,$connect,$cate_list){
   while($check=mysqli_fetch_object($result)){
     $islist=0;
     $time=round(($check->end-$check->start)/60)-$check->loss;
-    for($i=0;$i<sizeof($cate_list);$i++){
-      if($cate_list[$i]==$check->category){
-        $islist=1;
-        $time_list[$i]+=$time;
+    if(is_array($cate_list)||is_object($cate_list)){
+      for($i=0;$i<sizeof($cate_list);$i++){
+        if($cate_list[$i]==$check->category){
+          $islist=1;
+          $time_list[$i]+=$time;
+        }
       }
     }
     if($islist==0){
-      $new=sizeof($cate_list);
+      if(is_array($cate_list)||is_object($cate_list)) $new=sizeof($cate_list);
       $cate_list[$new]=$check->category;
       $time_list[$new]=$time; 
     }
