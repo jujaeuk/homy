@@ -55,7 +55,7 @@ else{
       unique(no),
       primary key(no),
       boardno int,
-      filename char(32))";
+      filename char(128))";
     mysqli_query($connect,$que);
   }
   include "data/db_access.php";
