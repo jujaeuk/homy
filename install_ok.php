@@ -1,11 +1,11 @@
 <?
+$connect=mysqli_connect($_POST['host'],$_POST['user'],$_POST['password'],$_POST['db']) or die("DB connection error");
 include "lib.php";
 include "head_join.php";
 ?>
 <div id=container <? if(!is_mobile()) echo "style=\"display: flex;\"";?>>
 <div id=main>
 <?
-$connect=mysqli_connect($_POST['host'],$_POST['user'],$_POST['password'],$_POST['db']) or die("DB connection error");
 if((mysqli_num_rows(mysqli_query($connect,"show tables like '".$_POST['homename']."_users'"))==0)&&($_POST['install']=="skin")){
   echo "ERROR: home does not exist<br><a href=install.php>back</a>\n";
 }
@@ -38,8 +38,7 @@ else{
       writer char(32),
       content text,
       upper int,
-      order_lower char(16) default 'time',
-      file char(128))";
+      order_lower char(16) default 'time')";
     mysqli_query($connect,$que);
     $que="create table ".$_POST['homename']."_log(
       no int not null auto_increment,
@@ -56,7 +55,7 @@ else{
       unique(no),
       primary key(no),
       boardno int,
-      filename char)";
+      filename char(32))";
     mysqli_query($connect,$que);
   }
   include "data/db_access.php";

@@ -25,8 +25,18 @@ echo "<tr><td>content</td><td><textarea name=content\n";
 if(is_mobile()) echo "cols=40 rows=10";
 else echo "cols=60 rows=20";
 echo ">".$check->content."</textarea></td></tr>\n";
-if($check->file) echo "<tr><td>file</td><td>".$check->file." <input type=checkbox name=fdel value=ok>delete</td></tr>\n";
-else echo "<tr><td>file</td><td><input type=file name=file></td></tr>\n";
+
+echo "<tr><td>file</td><td>\n";
+$que="select * from ".$homename."_files where boardno=$check->no";
+$result_file=mysqli_query($connect,$que);
+$i=0;
+while(@$check_file=mysqli_fetch_object($result_file)){
+	if($i==0) echo "파일을 삭제하려면 체크:<br>\n";
+	echo "<input type=checkbox name=fdel[] value=$check_file->no>$check_file->filename<br>\n";
+	$i++;
+}
+echo "새로 추가할 파일:<br>\n";
+echo "<input type=file name=file></td></tr>\n";
 echo "<tr><td colspan=2 align=center><input type=submit value=save></td></tr>\n";
 echo "</table>\n";
 echo "<input type=hidden name=writer value='".$_COOKIE['user']."'>\n";

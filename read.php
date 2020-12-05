@@ -11,10 +11,28 @@ else $que="select * from ".$homename."_board order by time desc limit 1";
 echo "<article>\n";
 echo "<h3>".$check->title."</h3>\n";
 echo "<p>by ".$check->writer." ".date("Y-m-d H:i",$check->time)." <a href=write.php?upper=$check->no>아랫글쓰기</a>";
-if($_COOKEI['user']==$check->writer) echo " <a href=modify.php?no=$check->no>수정</a> <a href=delete.php?no=$check->no&upper=$check->upper>삭제</a>";
+if($_COOKIE['user']==$check->writer) echo " <a href=modify.php?no=$check->no>수정</a> <a href=delete.php?no=$check->no&upper=$check->upper>삭제</a>";
 echo "</p>\n";
 echo "<p>".nl2br($check->content)."</p>\n";
-if($check->file) echo "<p>file: <a href=files/".$check->file.">".$check->file."</a></p>\n";
+
+$i=0;
+$que="select * from ".$homename."_files where boardno=".$check->no;
+$result_file=mysqli_query($connect,$que);
+while(@$check_file=mysqli_fetch_object($result_file)){
+	if($i==0) echo "<p>file:<br>\n";
+	$temp=explode(".",$check_file->filename);
+	$ext=end($temp);
+	if($ext=="py"||$ext=="txt"){
+		$fp=fopen("files/".$check_file->filename,"r");
+    	echo "<pre class=code>\n";
+    	while(!feof($fp)) echo fgets($fp);
+    	echo "</pre>\n";
+    	fclose($fp);
+	}
+	echo "<a href=\"files/".$check_file->filename."\">".$check_file->filename."</a><br>\n";
+	$i++;
+}
+if($i>0) echo "</p>\n";
 echo "</article>\n";
 echo "</div>\n";
 
