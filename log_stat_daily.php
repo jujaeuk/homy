@@ -34,8 +34,10 @@ function stat_day($day,$homename,$connect,$cate_list){
   }
   echo "<table>\n";
   echo "<tr><td colspan=2>".date("m/d", $the_day)."</td></tr>\n";
-  for($i=0;$i<sizeof($cate_list);$i++){
-    if($cate_list[$i]!="기록") echo "<tr><td>".$cate_list[$i]."</td><td align=right>".$time_list[$i]."</td></tr>\n";
+  if(is_array($cate_list)||is_object($cate_list)){
+    for($i=0;$i<sizeof($cate_list);$i++){
+      if($cate_list[$i]!="기록") echo "<tr><td>".$cate_list[$i]."</td><td align=right>".$time_list[$i]."</td></tr>\n";
+    }
   }
   echo "</table>\n";
   echo "</td>\n";
