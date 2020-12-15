@@ -26,13 +26,12 @@ include "data/db_access.php";
 include "head.php";
 if(is_mobile()) echo "<div id=containerm><div id=mainm>";
 else echo "<div id=container><div id=main>\n";
-echo "<h2>대문</h2>\n";
 echo "<article>\n";
 $que="select * from ".$homename."_board order by time desc limit 1";
 $result=mysqli_query($connect,$que);
 if(@$check=mysqli_fetch_object($result)){
-  echo "<h3>새글: ".$check->title."</h3>\n";
-  echo "<p>".date("Y-m-d H:i",$check->time)."\n";
+  echo "<p><h4>".$check->title."\n";
+  echo "(".date("Y-m-d H:i",$check->time).")</h4>\n";
   echo "</p>\n";
   echo "<p>\n";
   $que_file="select * from ".$homename."_files where boardno=".$check->no." limit 1";
@@ -48,7 +47,7 @@ if(@$check=mysqli_fetch_object($result)){
   $result_file=mysqli_query($connect,$que_file);
 }
 echo "</article>\n";
-echo "<h3>목차</h3>\n";
+echo "<h4>목차</h4>\n";
 subcontents($connect,$homename,0,0);
 echo "</div>\n";
 if(is_mobile()) echo "<div id=menum>\n";
