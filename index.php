@@ -22,7 +22,7 @@ function subcontents($connect,$homename,$upper,$level){
   }
 }
 include "lib.php";
-include "data/db_access.php";
+if(file_exists("data/db_access.php")) include "data/db_access.php";
 include "head.php";
 if(is_mobile()) echo "<div id=containerm><div id=mainm>";
 else echo "<div id=container><div id=main>\n";
