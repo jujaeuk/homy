@@ -10,7 +10,6 @@ function subcontents_backup($connect,$homename,$upper,$fp){
     subcontents_backup($connect,$homename,$check->no,$fp);
   }
 }
-include "login.php";
 ?>
 <div id=container <? if(!is_mobile()) echo "style=\"display: flex;\"";?>>
 <div id=main>
