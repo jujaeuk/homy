@@ -13,7 +13,7 @@ else{
   else $error_message="password incorrect";
 }
 if($error_message){
-  include "head1.php";
+  include "head_join.php";
   echo "<div id=container><div id=main>\n";
   echo "ERROR: ".$error_message;
   echo "</div></div></body></html>\n";
