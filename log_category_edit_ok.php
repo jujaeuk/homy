@@ -3,7 +3,6 @@ include "lib.php";
 include "data/db_access.php";
 if($_POST['merge']=='직접입력'){
   include "head.php";
-  include "login.php";
   echo "<div id=container";
   if(!is_mobile()) echo " style=\"display: flex;\"";
   echo "><div id=main>\n";
