@@ -28,6 +28,8 @@ while(@$check_file=mysqli_fetch_object($result_file)){
     	echo "</pre>\n";
     	fclose($fp);
 	}
+	$pic_ext=["JPG","jpg","PNG","png","JPEG","jpeg"];
+   	if(in_array($ext,$pic_ext)) echo "<img src=files/".$check_file->filename." width=100%>\n";
 	echo "<a href=\"files/".$check_file->filename."\">".$check_file->filename."</a><br>\n";
 	$i++;
 }
