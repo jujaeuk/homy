@@ -48,7 +48,9 @@ else{
       end int,
       loss int default 0,
       category char(32),
-      content char(128))";
+      content char(128),
+      due int,
+      up int)";
     mysqli_query($connect,$que);
     $que="create table ".$_POST['homename']."_files(
       no int not null auto_increment,
