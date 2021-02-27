@@ -37,14 +37,16 @@ else{
 	echo "<tr><td>(<a href=password.php class=header>password</a> <a href=logout.php class=header>logout</a>)\n";
     $que="select * from ".$homename."_users where name='".$_COOKIE['user']."'";
     @$check=mysqli_fetch_object(mysqli_query($connect,$que));
-    if($check->no==1) echo "<a href=log.php class=header>log</a>";
+    if($check->no==1) echo "<a href=log.php class=header>log</a>\n".
+    	"<a href=plan.php class=header>plan</a>\n";
 	echo "</td></tr></table>";
   }
   else{
     echo "user: ".$_COOKIE['user']." (<a href=password.php class=header>password</a> <a href=logout.php class=header>logout</a>)\n";
     $que="select * from ".$homename."_users where name='".$_COOKIE['user']."'";
     @$check=mysqli_fetch_object(mysqli_query($connect,$que));
-    if($check->no==1) echo "<a href=log.php class=header>log</a>";
+    if($check->no==1) echo "<a href=log.php class=header>log</a>\n".
+    	"<a href=plan.php class=header>plan</a>\n";
   }
 }
 ?>
