@@ -8,7 +8,7 @@ $now=time();
 $fpc=fopen("data/log.csv","w");
 $fpt=fopen("data/log.txt","w");
 fwrite($fpc,"start,end,loss,category,content\n");
-$que="select * from ".$homename."_log order by start";
+$que="select * from ".$homename."_log where due is null order by start";
 $result=mysqli_query($connect,$que);
 $i=0;
 while(@$check=mysqli_fetch_object($result)){
