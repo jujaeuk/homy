@@ -1,6 +1,7 @@
 <?
 include "lib.php";
 include "data/db_access.php";
+
 include "head.php";
 if(is_mobile()) echo "<div id=containerm><div id=mainm>";
 else echo "<div id=container><div id=main>\n";
