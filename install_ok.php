@@ -38,7 +38,8 @@ else{
       writer char(32),
       content text,
       upper int,
-      order_lower char(16) default 'time')";
+      order_lower char(16) default 'time',
+      subno int default 1)";
     mysqli_query($connect,$que);
     $que="create table ".$_POST['homename']."_log(
       no int not null auto_increment,
