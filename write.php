@@ -16,6 +16,7 @@ echo "<tr><td>order of lower</td><td><select name=order_lower>\n";
 echo "<option value='time' selected>시간순</option>\n";
 echo "<option value='time desc'>시간역순</option>\n";
 echo "<option value='title'>가나다순</option>\n";
+echo "<option value='subno'>사용자지정</option>\n";
 echo "</select></td></tr>\n";
 echo "<tr><td>content</td><td><textarea name=content\n";
 if(is_mobile()) echo "cols=40 rows=10";

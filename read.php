@@ -34,6 +34,20 @@ while(@$check_file=mysqli_fetch_object($result_file)){
 	$i++;
 }
 if($i>0) echo "</p>\n";
+
+echo "<h4>목차</h4>\n";
+$que="select * from ".$homename."_board where upper=".$check->no." order by $check->order_lower";
+$result=mysqli_query($connect,$que);
+$i=0;
+while(@$check_sub=mysqli_fetch_object($result)){
+  if($i==0) echo "<ul>\n";
+  echo "<li><a href=read.php?no=$check_sub->no>$check_sub->title</a>\n";
+  if($check_sub->subno>1) echo "<a href=subup.php?no=$check->no&sub=$check_sub->no&subno=$check_sub->subno>^</a>\n";
+  echo "</li>\n";
+  $i++;
+}
+if($i>0) echo "</ul>\n";
+
 echo "</article>\n";
 echo "</div>\n";
 
@@ -60,17 +74,6 @@ while(@$check_peer=mysqli_fetch_object($result_peer)){
   $i++;
 }
 if($i>0) echo "</ul>\n";
-echo "<h4>아랫글</h4>\n";
-$que="select * from ".$homename."_board where upper=".$check->no." order by $check->order_lower";
-$result=mysqli_query($connect,$que);
-$i=0;
-while(@$check_sub=mysqli_fetch_object($result)){
-  if($i==0) echo "<ul>\n";
-  echo "<li><a href=read.php?no=$check_sub->no>$check_sub->title</a></li>\n";
-  $i++;
-}
-if($i>0) echo "</ul>\n";
-
 ?>
 </div></div>
 </body>
