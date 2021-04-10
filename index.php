@@ -2,7 +2,7 @@
 function subcontents($connect,$homename,$upper,$level){
   $que="select * from ".$homename."_board where no=$upper";
   $check_upper=mysqli_fetch_object(mysqli_query($connect,$que));
-  if(!$check_upper->order_lower) $order_lower="title";
+  if(!$check_upper->order_lower) $order_lower="subno";
   else $order_lower=$check_upper->order_lower;
   $que="select * from ".$homename."_board where upper=$upper order by $order_lower";
   $result=mysqli_query($connect,$que);
@@ -10,6 +10,7 @@ function subcontents($connect,$homename,$upper,$level){
     echo "<ul>\n";
     while(@$check=mysqli_fetch_object($result)){
       echo "<li><a href=read.php?no=$check->no>$check->title</a>\n";
+      if($check->upper==0) echo "<a href=subup.php?no=0&sub=$check->no&subno=$check->subno>^</a>\n";
       $que="select * from ".$homename."_board where upper=$check->no";
       $check_sub=mysqli_fetch_object(mysqli_query($connect,$que));
       $que="select * from ".$homename."_users where name='".$_COOKIE['user']."'";
@@ -60,6 +61,18 @@ if($check->no==1){
   $result=mysqli_query($connect,$que);
   if(mysqli_num_rows($result)>0){
     echo "<li><a href=write.php?upper=0>글쓰기</a></li>\n";
+    
+    $samesub=0;
+	$que="select * from ".$homename."_board where upper=0";
+	$result_sub=mysqli_query($connect,$que);
+	while(@$check_sub=mysqli_fetch_object($result_sub)){
+		$que="select * from ".$homename."_board where upper=0 and subno=".$check_sub->subno;
+		$result_samesub=mysqli_query($connect,$que);
+		$samesub1=0;
+		while(@$check_samesub=mysqli_fetch_object($result_samesub)) $samesub1++;
+		if($samesub1>1) $samesub++;
+	}
+	if($samesub>0) echo "<li><a href=subno_rearrange.php?no=0>목차 재정렬</a></li>\n";
     echo "<li><a href=board_backup.php>게시판 백업</a></li>\n";
   }
   echo "<li><a href=users.php>사용자 목록</a></li>\n";

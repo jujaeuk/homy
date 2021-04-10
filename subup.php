@@ -13,5 +13,6 @@ mysqli_query($connect,$que);
 $que="update ".$homename."_board set subno=".$check->subno." where no=".$check_up->no;
 mysqli_query($connect,$que);
 
-echo "<meta http-equiv=\"refresh\" content=\"0;url=read.php?no=".$_GET['no']."\">\n";
+if($_GET['no']==0) echo "<meta http-equiv=\"refresh\" content=\"0;url=index.html\">\n";
+else echo "<meta http-equiv=\"refresh\" content=\"0;url=read.php?no=".$_GET['no']."\">\n";
 ?>

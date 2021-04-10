@@ -53,7 +53,7 @@ else{
 </div>
 <div id=topmenu>
 <?
-$que="select * from ".$homename."_board where upper=0 order by title";
+$que="select * from ".$homename."_board where upper=0 order by subno";
 @$result=mysqli_query($connect,$que);
 echo "&nbsp;&nbsp;<a href=index.html class=header>index</a>\n";
 while(@$check=mysqli_fetch_object($result)){

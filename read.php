@@ -62,7 +62,7 @@ if($check->upper!=0){
 echo "<h4>옆글</h4>\n";
 $que="select * from ".$homename."_board where no=$check->upper";
 $check_upper=mysqli_fetch_object(mysqli_query($connect,$que));
-if(!$check_upper->order_lower) $order_lower="title";
+if(!$check_upper->order_lower) $order_lower="subno";
 else $order_lower=$check_upper->order_lower;
 $que="select * from ".$homename."_board where upper=$check->upper order by $order_lower";
 $result_peer=mysqli_query($connect,$que);
