@@ -3,10 +3,13 @@ include "lib.php";
 include "data/db_access.php";
 
 $now=time();
-$que="insert into ".$homename."_board (title,time,writer,content,upper,order_lower)".
+$que="select * from ".$homename."_board where upper=".$_POST['upper']." order by subno desc limit 1";
+$check_maxsubno=mysqli_fetch_object(mysqli_query($connect,$que));
+$maxsubno=$check_maxsubno->subno+1;
+$que="insert into ".$homename."_board (title,time,writer,content,upper,order_lower,subno)".
 	" values('".htmlentities($_POST['title'],ENT_QUOTES)."',".$now.",'".
 	$_POST['writer']."','".htmlentities($_POST['content'],ENT_QUOTES)."',".
-	$_POST['upper'].",'".$_POST['order_lower']."')";
+	$_POST['upper'].",'".$_POST['order_lower']."',".$maxsubno.")";
 mysqli_query($connect,$que);
 
 $que="select * from ".$homename."_board where title='".htmlentities($_POST['title'],ENT_QUOTES).
