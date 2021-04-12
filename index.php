@@ -10,7 +10,7 @@ function subcontents($connect,$homename,$upper,$level){
     echo "<ul>\n";
     while(@$check=mysqli_fetch_object($result)){
       echo "<li><a href=read.php?no=$check->no>$check->title</a>\n";
-      if($check->upper==0) echo "<a href=subup.php?no=0&sub=$check->no&subno=$check->subno>^</a>\n";
+      if(($check->upper==0)&&($check->subno>1)) echo "<a href=subup.php?no=0&sub=$check->no&subno=$check->subno>^</a>\n";
       $que="select * from ".$homename."_board where upper=$check->no";
       $check_sub=mysqli_fetch_object(mysqli_query($connect,$que));
       $que="select * from ".$homename."_users where name='".$_COOKIE['user']."'";
