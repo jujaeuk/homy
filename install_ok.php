@@ -41,6 +41,12 @@ else{
       order_lower char(16) default 'time',
       subno int default 1)";
     mysqli_query($connect,$que);
+    $que="create table ".$_POST['homename']."_ref(
+      no int not null auto_increment,
+      primary key(no),
+      origin int,
+      ref int)";
+    mysqli_query($connect,$que);
     $que="create table ".$_POST['homename']."_log(
       no int not null auto_increment,
       unique(no),
