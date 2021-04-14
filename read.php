@@ -10,7 +10,7 @@ else $que="select * from ".$homename."_board order by time desc limit 1";
 echo "<article>\n";
 echo "<h4>".$check->title."</h4>\n";
 echo "<p>by ".$check->writer." ".date("Y-m-d H:i",$check->time)." <a href=write.php?upper=$check->no>아랫글쓰기</a>";
-if($_COOKIE['user']==$check->writer) echo " <a href=modify.php?no=$check->no>수정</a> <a href=delete.php?no=$check->no&upper=$check->upper>삭제</a>";
+if($_COOKIE['user']==$check->writer) echo " <a href=modify.php?no=$check->no>수정</a> <a href=addref.php?no=$check->no>참조</a> <a href=delete.php?no=$check->no&upper=$check->upper>삭제</a>";
 echo "</p>\n";
 echo "<p>".nl2br($check->content)."</p>\n";
 
@@ -35,13 +35,28 @@ while(@$check_file=mysqli_fetch_object($result_file)){
 }
 if($i>0) echo "</p>\n";
 
+$que="select * from ".$homename."_ref where origin=$check->no";
+$result_ref=mysqli_query($connect,$que);
+$i=0;
+while(@$check_ref=mysqli_fetch_object($result_ref)){
+  if($i==0){
+  	echo "<h4>참조</h4>\n";
+  	echo "<ul>\n";
+  }
+  $que="select * from ".$homename."_board where no=".$check_ref->ref;
+  $check_ref1=mysqli_fetch_object(mysqli_query($connect,$que));
+  echo "<li><a href=read.php?no=$check_ref1->no>$check_ref1->title</a> <a href=delref.php?no=$check->no&refno=$check_ref->no>x</a></li>\n";
+  $i++;
+}
+if($i>0) echo "</ul>\n";
+
 $que="select * from ".$homename."_board where upper=".$check->no." order by $check->order_lower";
 $result=mysqli_query($connect,$que);
 $i=0;
 while(@$check_sub=mysqli_fetch_object($result)){
   if($i==0){
-    echo "<h4>목차</h4>\n";
-    echo "<ul>\n";
+  	echo "<h4>목차</h4>\n";
+  	echo "<ul>\n";
   }
   echo "<li><a href=read.php?no=$check_sub->no>$check_sub->title</a>\n";
   if($check_sub->subno>1) echo "<a href=subup.php?no=$check->no&sub=$check_sub->no&subno=$check_sub->subno>^</a>\n";
