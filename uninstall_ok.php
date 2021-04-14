@@ -14,6 +14,8 @@ if($_POST['uninstall']=="table"){
   mysqli_query($connect,$que);
   $que="drop table ".$homename."_board";
   mysqli_query($connect,$que);
+  $que="drop table ".$homename."_ref";
+  mysqli_query($connect,$que);
   $que="drop table ".$homename."_log";
   mysqli_query($connect,$que);
   $que="drop table ".$homename."_files";
