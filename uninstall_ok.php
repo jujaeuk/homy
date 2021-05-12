@@ -9,18 +9,10 @@ $files=glob("files/*");
 foreach($files as $file)
   if(is_file($file)) unlink($file);
 rmdir("files");
-if($_POST['uninstall']=="table"){
-  $que="drop table ".$homename."_users";
-  mysqli_query($connect,$que);
-  $que="drop table ".$homename."_board";
-  mysqli_query($connect,$que);
-  $que="drop table ".$homename."_ref";
-  mysqli_query($connect,$que);
-  $que="drop table ".$homename."_log";
-  mysqli_query($connect,$que);
-  $que="drop table ".$homename."_files";
-  mysqli_query($connect,$que);
-}
-  setcookie("user", $_COOKIE['user'],time()-3600,".");
-  echo "<meta http-equiv=\"refresh\" content=\"0;url=index.html\">\n";
+
+$que="drop table ".$homename."_users, ".$homename."_board, ".$homename."_ref, ".$homename."_log, ".$homename."_files";
+mysqli_query($connect,$que);
+
+setcookie("user", $_COOKIE['user'],time()-3600,".");
+echo "<meta http-equiv=\"refresh\" content=\"0;url=index.html\">\n";
 ?>
