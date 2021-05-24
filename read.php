@@ -49,6 +49,20 @@ while(@$check_ref=mysqli_fetch_object($result_ref)){
   $i++;
 }
 if($i>0) echo "</ul>\n";
+$que="select * from ".$homename."_ref where ref=$check->no";
+$result_origin=mysqli_query($connect,$que);
+$i=0;
+while(@$check_origin=mysqli_fetch_object($result_origin)){
+  if($i==0){
+  	echo "<h4>참조됨</h4>\n";
+  	echo "<ul>\n";
+  }
+  $que="select * from ".$homename."_board where no=".$check_origin->origin;
+  $check_origin1=mysqli_fetch_object(mysqli_query($connect,$que));
+  echo "<li><a href=read.php?no=$check_origin1->no>$check_origin1->title</a> <a href=delref.php?no=$check->no&refno=$check_origin->no>x</a></li>\n";
+  $i++;
+}
+if($i>0) echo "</ul>\n";
 
 $que="select * from ".$homename."_board where upper=".$check->no." order by $check->order_lower";
 $result=mysqli_query($connect,$que);
